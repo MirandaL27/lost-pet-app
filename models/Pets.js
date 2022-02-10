@@ -7,18 +7,24 @@ class Pet extends Model {
     static upvote(body, models) {
         return models.Vote.create({
             user_id: body.user_id,
-            post_id: body.post_id
+            pet_id: body.pet_id
         })
         .then(() => {
-            return Post.findOne({
+            return Pet.findOne({
                 where: {
-                    id: body.post_id
+                    id: body.pet_id
                 },
                 attributes: [
                     'id',
-                    'post_url',
-                    'title',
-                    [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.pet_id)')]
+                    'pet_url',
+                    'name',
+                    'specie',
+                    'pet-id-number',
+                    'color',
+                    'gender',
+                    'diet',
+                    'reported-location'
+                    [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE pet.id = vote.pet_id)')]
                 ],
                 include: [
                     {
@@ -34,7 +40,7 @@ class Pet extends Model {
         });
     }
 }
-//fields and colums for post model
+//fields and colums for pet model
 Pet.init(
     {
         id: {
@@ -43,7 +49,7 @@ Pet.init(
             primaryKey: true,
             autoIncrement: true
         },
-        title: {
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -54,13 +60,42 @@ Pet.init(
               isURL: true
             }
         },
+        specie: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+
         user_id: {
             type: DataTypes.INTEGER,
             references: {
                 model: 'user',
                 key: 'id'
             }
-        }
+        },
+        pet_id_number: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [8]
+              }
+       },
+       color: {
+        type: DataTypes.STRING,
+        allowNull: false,
+       },
+       gender: {
+        type: DataTypes.STRING,
+        allowNull: false,
+       },
+       diet: {
+        type: DataTypes.STRING,
+        allowNull: false,
+       },
+       reported_location: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        
+       }
     },
     {
         sequelize,

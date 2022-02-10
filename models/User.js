@@ -30,6 +30,10 @@ User.init(
               isEmail: true
             }
           },
+        contactMethod: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
           password: {
             type: DataTypes.STRING,
             allowNull: false,
