@@ -94,8 +94,14 @@ Pet.init(
        reported_location: {
         type: DataTypes.STRING,
         allowNull: false,
-        
-       }
+       },
+       petstatus: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            equals: ['lost', 'found'],
+          }
+    },
     },
     {
         sequelize,
