@@ -96,12 +96,11 @@ Pet.init(
         allowNull: false,
        },
        petstatus: {
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
         allowNull: false,
-        validate: {
-            equals: ['lost', 'found'],
-          }
+        defaultValue: true
     },
+    
     },
     {
         sequelize,
