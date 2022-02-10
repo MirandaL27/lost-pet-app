@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 
 //Pet model
-class Pest extends Model {
+class Pet extends Model {
     static upvote(body, models) {
         return models.Vote.create({
             user_id: body.user_id,
@@ -18,7 +18,7 @@ class Pest extends Model {
                     'id',
                     'post_url',
                     'title',
-                    [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+                    [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.pet_id)')]
                 ],
                 include: [
                     {
