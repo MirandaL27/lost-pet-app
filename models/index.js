@@ -11,20 +11,20 @@ Pet.belongsTo(User, {
     onDelete: 'SET NULL'
 });
 
-User.belongsToMany(Pet, {
-    through: Vote,
-    as: 'voteed_pets',
+// User.belongsToMany(Pet, {
+//     through: Vote,
+//     as: 'voteed_pets',
 
-    foreignKey: 'user_id',
-    onDelete: 'SET NULL'
-});
+//     foreignKey: 'user_id',
+//     onDelete: 'SET NULL'
+// });
 
-Pet.belongsToMany(User, {
-    through: Vote,
-    as: 'voted_pets',
-    foreignKey: 'pet_id',
-    onDelete: 'SET NULL'
-})
+// Pet.belongsToMany(User, {
+//     through: Vote,
+//     as: 'voted_pets',
+//     foreignKey: 'pet_id',
+//     onDelete: 'SET NULL'
+// })
 
 //associate to comment====//
 Comment.belongsTo(User, {
@@ -43,7 +43,8 @@ User.hasMany(Comment, {
 });
 
 Pet.hasMany(Comment, {
-    foreignKey: 'pet_id'
+    foreignKey: 'pet_id',
+    onDelete:'SET NULL'
 });
 
 
