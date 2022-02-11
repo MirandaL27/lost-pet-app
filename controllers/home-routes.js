@@ -4,6 +4,7 @@ const { Pet, User, Comment } = require('../models');
 
 //render homepage (all posts from all users)
 router.get('/', (req, res) => {
+
   Pet.findAll({
     // attributes: [
     //   'id',
@@ -94,7 +95,6 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-
   res.render('login');
 });
 
