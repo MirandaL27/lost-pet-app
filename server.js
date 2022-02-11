@@ -4,6 +4,7 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const path = require('path');
 const exphbs = require('express-handlebars');
+const multer  = require('multer')
 //const helpers = require('./utils/helpers');
 const hbs = exphbs.create({ });
 
@@ -28,6 +29,18 @@ const sess = {
 
 };
 
+//----------------upload image
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+})
+const upload = multer({ storage: storage })
+
+
 app.use(session(sess));
 
 
@@ -35,6 +48,7 @@ app.use(session(sess));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static('uploads'));
 
 // turn on routes
 app.use(routes);
