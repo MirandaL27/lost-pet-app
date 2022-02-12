@@ -2,16 +2,23 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Pet, User, Comment } = require('../models');
 
-//render homepage (all posts from all users)
+//render homepage (all pets from all users)
 router.get('/', (req, res) => {
 
   Pet.findAll({
-    // attributes: [
-    //   'id',
-    //   'pet_url',
-    //   'title',
-    //   'created_at',
-    // ],
+    attributes: [
+      'id',
+      'name',
+      'pet_url',
+      'specie',
+      'pet_id_number',
+      'color',
+      'gender',
+      'diet',
+      'reported_location',
+      'petstatus',
+      'created_at',
+    ],
     include: [
       {
         model: Comment,
@@ -27,11 +34,11 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbPostData => {
+    .then(dbPetData => {
       // pass a single post object into the homepage template
-      const posts = dbPostData.map(post => post.get({ plain: true }));
+      const pets = dbPetData.map(pet => pet.get({ plain: true }));
       res.render('homepage', {
-        posts,
+        pets,
         loggedIn: req.session.loggedIn
       });
     })
@@ -41,18 +48,25 @@ router.get('/', (req, res) => {
     });
   });
 
-  //render single post(by id)
-  router.get('/post/:id', (req, res) => {
+  //render single pet(by id)
+  router.get('/pet/:id', (req, res) => {
     Pet.findOne({
       where: {
         id: req.params.id
       },
-      // attributes: [
-      //   'id',
-      //   'pet_url',
-      //   'title',
-      //   'created_at',
-      // ],
+      attributes: [
+        'id',
+        'name',
+        'pet_url',
+        'specie',
+        'pet_id_number',
+        'color',
+        'gender',
+        'diet',
+        'reported_location',
+        'petstatus',
+        'created_at',
+      ],
       include: [
         {
           model: Comment,
@@ -68,18 +82,18 @@ router.get('/', (req, res) => {
         }
       ]
     })
-      .then(dbPostData => {
-        if (!dbPostData) {
-          res.status(404).json({ message: 'No post found with this id' });
+      .then(dbPetData => {
+        if (!dbPetData) {
+          res.status(404).json({ message: 'No pet found with this id' });
           return;
         }
   
         // serialize the data
-        const post = dbPostData.get({ plain: true });
+        const pet = dbPetData.get({ plain: true });
   
         // pass data to template
-        res.render('single-post', {
-          post,
+        res.render('single-pet', {
+          pet,
           loggedIn: req.session.loggedIn
         });
       })
@@ -97,5 +111,7 @@ router.get('/login', (req, res) => {
   }
   res.render('login');
 });
+
+
 
 module.exports = router;
