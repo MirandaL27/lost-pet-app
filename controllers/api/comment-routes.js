@@ -13,7 +13,7 @@ router.post('/', async(req, res) => {
     if(req.session){
       let data = await Comment.create({
         comment_text: req.body.comment_text,
-        post_id: req.body.post_id,
+        pet_id: req.body.pet_id,
         user_id: req.session.user_id
       });
       data = res.json(data);

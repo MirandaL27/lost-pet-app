@@ -26,13 +26,13 @@ router.get('/:id', async (req, res) => {
       include: [
         {
           model: Pet,
-          attributes: ['id', 'created_at']
+          attributes: ['id','name', 'pet_url','species','breed','pet_id_number','color','gender','age','diet','reported_location','created_at', 'is_lost', 'image_path']
         },
         {
           model: Comment,
           attributes: ['id', 'comment_text', 'created_at'],
           include: {
-            model: Post,
+            model: Pet,
             attributes: ['id']
           }
         }
@@ -45,8 +45,8 @@ router.get('/:id', async (req, res) => {
     res.json(data);
   }
   catch(error){
-    console.log(err);
-    res.status(500).json(err);
+    console.log(error);
+    res.status(500).json(error);
   }
 
 });
@@ -57,6 +57,7 @@ router.post('/',async (req, res) => {
     let data = await User.create({
       username: req.body.username,
       email: req.body.email,
+      contactMethod: req.body.contactMethod,
       password: req.body.password
     });
       req.session.save(() => {
@@ -64,12 +65,12 @@ router.post('/',async (req, res) => {
         req.session.username = data.username;
         req.session.loggedIn = true;
     
-        res.json(dData);
+        res.json(data);
       });
   }
   catch(error){
-    console.log(err);
-      res.status(500).json(err);
+    console.log(error);
+      res.status(500).json(error);
   }
   
   });
@@ -133,8 +134,8 @@ router.put('/:id', async (req, res) => {
     res.json(data);
   }
   catch(error){
-    console.log(err);
-      res.status(500).json(err);
+    console.log(error);
+      res.status(500).json(error);
   }
   });
 
