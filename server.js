@@ -4,8 +4,8 @@ const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const path = require('path');
 const exphbs = require('express-handlebars');
-const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+//const multer  = require('multer')
+//const upload = multer({ dest: 'uploads/' })
 //const helpers = require('./utils/helpers');
 const hbs = exphbs.create({ });
 
@@ -30,18 +30,6 @@ const sess = {
 
 };
 
-//----------------upload image
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, './uploads')
-//     },
-//     filename: function (req, file, cb) {
-//       cb(null, file.originalname)
-//     }
-// })
-// const upload = multer({ storage: storage })
-
-
 app.use(session(sess));
 
 
@@ -59,17 +47,20 @@ app.get('/upload', (req, res) => {
     return;
   }
   //ToDO: add code that will return the image.
+  
   res.render('petImage');
 });
 
-app.post('/upload',upload.single('img-post'),(req, res) => {
-  //post the image here!
-  console.log(req.file);
-  var response = '<a href="/">Home</a><br>'
-  response += "Files uploaded successfully.<br>"
-  response += `<img src="${req.file.path}" /><br>`
-  return res.send(response)
-});
+// app.post('/upload',upload.single('img-post'),(req, res) => {
+//   //post the image here!
+//   //todo: add the file path to the pet post in the database.
+
+//   console.log(req.file);
+//   var response = '<a href="/">Home</a><br>'
+//   response += "Files uploaded successfully.<br>"
+//   response += `<img src="${req.file.path}" /><br>`
+//   return res.send(response)
+// });
 
 
 // turn on routes

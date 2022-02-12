@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
       include: [
         {
           model: Pet,
-          attributes: ['id','name', 'pet_url','specie','pet_id_number','color','gender','diet','reported_location','created_at', 'petstatus']
+          attributes: ['id','name', 'pet_url','species','breed','pet_id_number','color','gender','age','diet','reported_location','created_at', 'is_lost', 'image_path']
         },
         {
           model: Comment,

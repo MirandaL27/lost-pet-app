@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const { Pet, User, Comment} = require('../../models');
 const sequelize = require('../../config/connection');
-
+const multer  = require('multer');
+const upload = multer({ dest: 'uploads/' });
 // get all pets
 router.get('/', (req, res) => {
     Pet.findAll({
@@ -9,14 +10,17 @@ router.get('/', (req, res) => {
         'id',
         'name',
         'pet_url',
-        'specie',
+        'species',
+        'breed',
         'pet_id_number',
         'color',
         'gender',
+        'age',
         'diet',
         'reported_location',
-        'petstatus',
+        'is_lost',
         'created_at',
+        'image_path'
       ],
       order: [['created_at', 'DESC']], 
       include: [
@@ -51,13 +55,16 @@ router.get('/', (req, res) => {
         'id',
         'name',
         'pet_url',
-        'specie',
+        'species',
+        'breed',
         'pet_id_number',
         'color',
         'gender',
+        'age',
         'diet',
         'reported_location',
-        'petstatus',
+        'is_lost',
+        'image_path',
         'created_at',
       ],
       include: [
@@ -88,19 +95,24 @@ router.get('/', (req, res) => {
       });
   });
 
+
   //create new pet
-  router.post('/',(req, res) => {
+  router.post('/',upload.single('img-post'),(req, res) => {
+    console.log(req.body, req.body.status_lost);
     Pet.create({
-      id: req.body.id,
       name: req.body.name,
-      pet_url: req.body.pet_url,
-      specie: req.body.specie,
-      pet_id_number: req.body.pet_id_number,
-      color: req.body.color,
+      pet_url: "test.com",
+      species: req.body.species,
+      breed: req.body.breed,
+      pet_id_number: req.body.Id_number,
+      color: req.body.colors,
       gender: req.body.gender,
+      age: req.body.age,
       diet: req.body.diet,
-      reported_location: req.body.reported_location,
-      petstatus: req.body.petstatus,
+      reported_location: req.body.location,
+      is_lost: (req.body.status_lost === "Lost" ? true: false),
+      image_path: "/" + req.file.path.replace("\\","/"),
+      user_id: req.session.user_id
     })
       .then(dbPetData => res.json(dbPetData))
       .catch(err => {

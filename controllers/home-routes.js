@@ -10,14 +10,17 @@ router.get('/', (req, res) => {
       'id',
       'name',
       'pet_url',
-      'specie',
+      'species',
+      'breed',
       'pet_id_number',
       'color',
       'gender',
+      'age',
       'diet',
       'reported_location',
-      'petstatus',
+      'is_lost',
       'created_at',
+      'image_path'
     ],
     include: [
       {
@@ -58,14 +61,17 @@ router.get('/', (req, res) => {
         'id',
         'name',
         'pet_url',
-        'specie',
+        'species',
+        'breed',
         'pet_id_number',
         'color',
         'gender',
+        'age',
         'diet',
         'reported_location',
-        'petstatus',
+        'is_lost',
         'created_at',
+        'image_path'
       ],
       include: [
         {
@@ -78,7 +84,7 @@ router.get('/', (req, res) => {
         },
         {
           model: User,
-          attributes: ['username']
+          attributes: ['username', 'email', 'contactMethod']
         }
       ]
     })
@@ -90,7 +96,7 @@ router.get('/', (req, res) => {
   
         // serialize the data
         const pet = dbPetData.get({ plain: true });
-  
+        console.log(pet);
         // pass data to template
         res.render('single-pet', {
           pet,
@@ -101,6 +107,14 @@ router.get('/', (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
+  });
+//render add pet page
+  router.get('/add/pet' , (req, res) => {
+    if(!req.session.loggedIn){
+      res.redirect('/');
+      return;
+    }
+    res.render('add-pet');
   });
 
   //render login page
