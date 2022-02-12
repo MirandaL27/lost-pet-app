@@ -98,23 +98,25 @@ router.get('/', (req, res) => {
 
   //create new pet
   router.post('/',upload.single('img-post'),(req, res) => {
-    console.log(req.body, req.body.status_lost);
+    console.log(req.session.user_id, req.session.loggedIn);
     Pet.create({
       name: req.body.name,
       pet_url: "test.com",
       species: req.body.species,
       breed: req.body.breed,
-      pet_id_number: req.body.Id_number,
+      pet_id_number: (req.body.Id_number != "" ? req.body.Id_number: null),
       color: req.body.colors,
       gender: req.body.gender,
       age: req.body.age,
       diet: req.body.diet,
       reported_location: req.body.location,
-      is_lost: (req.body.status_lost === "Lost" ? true: false),
-      image_path: "/" + req.file.path.replace("\\","/"),
+      is_lost: (req.body.status === "lost" ? true: false),
+      image_path: (req.file ? "/" + req.file.path.replace("\\","/") : null),
       user_id: req.session.user_id
     })
-      .then(dbPetData => res.json(dbPetData))
+      .then(data => {
+        res.redirect('/');
+      })
       .catch(err => {
         console.log(err);
         res.status(500).json(err);

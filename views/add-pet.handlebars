@@ -3,17 +3,20 @@
     <h2>Enter Pet Information:</h2>
     <div class="text-section">
         <label>Name: </label>
-        <input type="text" name="name"/>
+        <input type="text" name="name" required/>
         <label>Species: </label>
-        <input type="text" name = "species"/>
+        <input type="text" name = "species" required/>
         <label>Breed: </label>
         <input type="text" name="breed"/>
         <label>Gender: </label>
-        <input type="text" name="gender"/>
+        <select name="gender" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
         <label>Age: </label>
         <input type="number" min="0" name="age"/>
         <label>Id number: </label>
-        <input type="text" name="Id_number" minlength = "8"/>
+        <input type="text" name="Id_number" minlength = "8" pattern="[0-9]+$"/>
         <label>Color: </label>
         <select name="colors" id="colors">
             <option value="white">White</option>
@@ -34,10 +37,10 @@
         <input type="text" name="location"/>
         <div class="status-container">
             <label>Status: </label>
-            <input type="radio" id="status_lost" name="status_lost" value="Lost" checked/>
-            <label for="status_lost">Lost</label>
-            <input type="radio" id="status_found" name="status_found" value="Found"/>
-            <label for="status_found">Found</label>
+            <select name="status" id="status">
+                <option value="lost">Lost</option>
+                <option value="found">Found</option>
+            </select>
         </div>
     </div>
     <div class = "image-section">
