@@ -1,0 +1,43 @@
+{{#if loggedIn}}
+<article class = "pet">
+    <div class="pet-header">
+      <h2>Pet Information</h2>  
+    </div>
+    <div class="pet-details">
+        <h3>Name: {{pet.name}}</h3>
+        <p>Species: {{pet.species}}</p>
+        <p>Breed: {{pet.breed}}</p>
+        <p>Gender: {{pet.gender}}</p>
+        <p>Age: {{pet.age}}</p>
+        <p>Id number: {{pet.pet_id_number}}</p>
+        <p>Color: {{pet.color}}</p>
+        <p>Diet: {{pet.diet}}</p>
+        <p>Last known location: {{pet.reported_location}}</p>
+        {{#if pet.is_lost}}
+        <p>Status: Lost</p>
+        {{else}}
+        <p>Status: Found</p>
+        {{/if}}
+    </div>
+    <div class="pet-image">
+        {{#if pet.image_path}}
+        <img src="{{pet.image_path}}">
+        {{else}}
+        <p>No Image was provided for this pet.</p>
+        {{/if}}
+    </div>
+</article>
+<article class="owner">
+    <div class="owner-header">
+        <h2>Owner information</h2>
+    </div>
+    <div class="owner-details">
+    <h3>User Name: {{pet.user.username}}</h3>
+    <p>Email: {{pet.user.email}}</p>
+    <p>Preferred Contact Method: {{pet.user.contactMethod}}</p>        
+    </div>
+</article>
+{{else}}
+<h2>You are not logged in!</h2>
+<a href = "/login">Login</a>
+{{/if}}
