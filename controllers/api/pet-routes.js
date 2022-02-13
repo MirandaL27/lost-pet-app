@@ -112,7 +112,7 @@ router.get('/', (req, res) => {
       diet: req.body.diet,
       reported_location: req.body.location,
       is_lost: (req.body.status === "lost" ? true: false),
-      image_path: (req.file ? req.file.path.replace("/public","") : null),
+      image_path: (req.file ? req.file.path.replace("public","") : null),
       user_id: req.body.user_id
     })
       .then(data => {
@@ -153,7 +153,7 @@ router.delete('/:id',(req, res) => {
   //update pet (need to use post route because html forms don't support put or delete)
   router.post('/:id',upload.single('img-post'),(req, res) => {
     console.log("Hello!  you are in the pets update route!");
-    console.log(req.body, req.params.id);
+    console.log(req.body, req.params.id, req.file.path);
     Pet.update(
       {
         name: req.body.name,
@@ -167,7 +167,7 @@ router.delete('/:id',(req, res) => {
         diet: req.body.diet,
         reported_location: req.body.location,
         is_lost: (req.body.status === "lost" ? true: false),
-        image_path: (req.file ? req.file.path.replace("/public","") : null)
+        image_path: (req.file ? req.file.path.replace("public","") : null)
       },
       {
         where: {
