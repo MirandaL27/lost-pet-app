@@ -46,9 +46,9 @@
     <h2>Comments </h2>
     {{#each pet.comments as |comment|}}
         <div class="comment">
-            <p>Comment: {{comment.comment_text}}</p>
+            <p>Text: {{comment.comment_text}}</p>
             <p>Posted By: {{comment.user.username}}</p>
-            <p>Created: {{comment.created_at}}</p>
+            <p>Created: {{format_date comment.created_at}}</p>
         </div>
     {{/each}}
     </div>
