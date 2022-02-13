@@ -14,39 +14,29 @@
 
 </head>
 
-<body>
+<body class="">
   
-  <div class="wrapper">
-    <header>
-
-
-<div class="row min-vh-100 no-gutters">
-    <header class="col-12 col-lg-3 bg-dark text-light sticky-top d-flex flex-column p-4 p-lg-3">
+<div class="wrapper w-100">
+    <header class="bg-dark text-light sticky-top d-flex">
       
-      <h1 class="text-center">
+      <h1 class="col-lg-5 p-4">
          <a href="/">Lost Pet App</a>
       </h1>
-      <button id="login" class="btn-no-style">
-        log in
-      </button>
-
-       <button id="logout" class="btn-no-style">
-         logout
-      </button> 
-      
-  
-      <p class="d-none d-lg-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi voluptas architecto ipsa
-        excepturi aut non
-        laudantium sequi fugit officiis optio deleniti asperiores rem eius laborum maxime blanditiis culpa, quis iste?
-      </p>
-
+      <nav class="row col-lg-7">
+        {{#if loggedIn}}
+        <a class="col-lg-4 text-center my-auto h4" href="/dashboard">Dashboard</a>
+        {{/if}}
+        <a class="col-lg-4 text-center my-auto h4" href="/login">Login</a>
+        <button id="logout" class="btn-no-style col-lg-4 text-center my-auto h4">Logout</button>
+      </nav>
+  </header>
     <main>
       {{{ body }}}
     </main>
-    <footer>
+    <footer class="bg-dark text-light p-4">
       We hope all pets find their homes!
     </footer>
-  </div>
+</div>
 
 </body>
 
