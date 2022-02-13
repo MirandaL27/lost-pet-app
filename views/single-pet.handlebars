@@ -38,7 +38,29 @@
     <p>Preferred Contact Method: {{pet.user.contactMethod}}</p>        
     </div>
 </article>
+<article class="comments">
+    <h2>Comments: </h2>
+    {{#each pet.comments as |comment|}}
+        <div class="comment">
+            <p>Comment: {{comment.comment_text}}</p>
+            <p>Posted By: {{comment.user.username}}</p>
+            <p>Created: {{comment.created_at}}</p>
+        </div>
+    {{/each}}
+    <div class="comment-add">
+        <div class="comment-header">
+            <h2>Add a comment:</h2>
+        </div>
+        <label>Comment Text:</label>
+        <textarea name="comment_text" class="comment-text" id="comment-text"></textarea>
+        <button class="add-comment">Post</button>
+    </div>
+</article>
 {{else}}
 <h2>You are not logged in!</h2>
 <a href = "/login">Login</a>
+{{/if}}
+
+{{#if loggedIn}}
+<script src = "/javascript/comments.js"></script>
 {{/if}}
