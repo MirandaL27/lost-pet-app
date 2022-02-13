@@ -2,7 +2,7 @@
 <form action = "/api/pets" enctype="multipart/form-data" class ="pet-image-upload-form bg-secondary text-light p-4" method="POST">
     <h2>Enter Pet Information:</h2>
     <div class="text-section row">
-        <div class="first-column col-6">
+        <div class="first-column col-lg-6 col-sm-12">
             <div class="name-wrapper row p-2">
                 <label class="col-4">Name: </label>
                 <input class="col-8" type="text" name="name" required/>
@@ -27,7 +27,7 @@
                 <input class="col-8" type="number" min="0" name="age"/>
             </div>
         </div>
-        <div class="second-column col-6">
+        <div class="second-column col-lg-6 col-sm-12">
             <div class="id-number-wrapper row p-2">
                 <label class="col-4">Id number: </label>
                 <input class="col-8" type="text" name="Id_number" minlength = "8" pattern="[0-9]+$"/>

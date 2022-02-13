@@ -5,7 +5,7 @@
       <h2 class="p-4">Pet Information</h2>  
     </div>
     <div class="pet-section-wrapper row">
-        <div class="pet-details col-6 pl-lg-5">
+        <div class="pet-details col-sm-12 col-lg-6 pl-sm-4 pl-lg-5">
         <h3>Name: {{pet.name}}</h3>
         <p>Species: {{pet.species}}</p>
         <p>Breed: {{pet.breed}}</p>
@@ -21,7 +21,7 @@
         <p>Status: Found</p>
         {{/if}}
     </div>
-    <div class="pet-image col-6">
+    <div class="pet-image col-sm-12 col-lg-6 p-4">
         {{#if pet.image_path}}
         <img class="w-75 h-75 border border-3 border-dark rounded shadow" src="{{pet.image_path}}">
         {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
@@ -31,7 +31,7 @@
     </div>
     </div>
 </article>
-<article class="owner pl-lg-4 bg-dark">
+<article class="owner pl-lg-4 pl-sm-4 bg-dark">
     <div class="owner-header">
         <h2>Owner information</h2>
     </div>
@@ -41,8 +41,8 @@
     <p>Preferred Contact Method: {{pet.user.contactMethod}}</p>        
     </div>
 </article>
-<article class="comments pl-lg-4 row">
-    <div class="comment-wrapper col-6">
+<article class="comments pl-lg-4 pl-sm-4 row">
+    <div class="comment-wrapper col-lg-6 col-sm-12">
     <h2>Comments </h2>
     {{#each pet.comments as |comment|}}
         <div class="comment">
@@ -52,11 +52,11 @@
         </div>
     {{/each}}
     </div>
-    <div class="comment-add col-6">
+    <div class="comment-add col-lg-6 col-sm-12">
         <div class="comment-header">
             <h2>Add a comment</h2>
         </div>
-        <div class="comment-add-wrapper pl-lg-4">
+        <div class="comment-add-wrapper pl-lg-4 pl-sm-4">
             <label class="row">Comment Text:</label>
             <textarea name="comment_text" class="comment-text row" id="comment-text"></textarea>
             <button class="add-comment row m-2">Post</button>
