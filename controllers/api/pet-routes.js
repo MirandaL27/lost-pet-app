@@ -138,7 +138,8 @@ router.delete('/:id',(req, res) => {
       res.status(404).json({ message: 'No pet found with this id' });
       return;
     }
-    fs.unlink(dbPetData.image_path, () => {
+    console.log(dbPetData.image_path);
+    fs.unlink("public"+dbPetData.image_path, () => {
       
       res.send("Photo deleted Successfully!")
     
@@ -153,7 +154,7 @@ router.delete('/:id',(req, res) => {
   //update pet (need to use post route because html forms don't support put or delete)
   router.post('/:id',upload.single('img-post'),(req, res) => {
     console.log("Hello!  you are in the pets update route!");
-    console.log(req.body, req.params.id, req.file.path);
+    //console.log(req.body, req.params.id, req.file.path);
     Pet.update(
       {
         name: req.body.name,
