@@ -129,6 +129,11 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get('/search', (req, res) => {
+  //use url params to query the database based on user filter input
+  
+})
+
 
 
 module.exports = router;
