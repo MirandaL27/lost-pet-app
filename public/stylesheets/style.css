@@ -10,3 +10,7 @@
     text-decoration: underline;
     display: inline-block;
 }
+
+.border-3{
+    border-width:3px !important;
+}
