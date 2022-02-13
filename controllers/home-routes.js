@@ -110,12 +110,15 @@ router.get('/', (req, res) => {
   });
 //render add pet page
   router.get('/add/pet' , (req, res) => {
+    console.log(req.session);
     if(!req.session.loggedIn){
       res.redirect('/');
       return;
     }
-    res.render('add-pet');
+    const session = {loggedIn: req.session.loggedIn, user_id : req.session.user_id, username: req.session.username};
+    res.render('add-pet', session);
   });
+
 
   //render login page
 router.get('/login', (req, res) => {
