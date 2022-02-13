@@ -47,6 +47,11 @@
         <label>Upload pet picture: </label>
         <input type="file" name="img-post"/>
     </div>
+    <div hidden>
+        <input type="text" name = "loggedIn" value="{{loggedIn}}" readonly/>
+        <input type="text" name = "user_id" value="{{user_id}}" readonly/>
+        <input type="text" name = "username" value="{{username}}" readonly/>
+    </div>
     <div>
         <input type="submit" value="Submit" />
     </div>

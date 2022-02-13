@@ -2,7 +2,8 @@ const router = require('express').Router();
 const { Pet, User, Comment} = require('../../models');
 const sequelize = require('../../config/connection');
 const multer  = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: 'public/uploads/' });
+const fs = require('fs');
 // get all pets
 router.get('/', (req, res) => {
     Pet.findAll({
@@ -84,7 +85,7 @@ router.get('/', (req, res) => {
     })
       .then(dbPetData => {
         if (!dbPetData) {
-          res.status(404).json({ message: 'No post found with this id' });
+          res.status(404).json({ message: 'No pet found with this id' });
           return;
         }
         res.json(dbPetData);
@@ -98,7 +99,7 @@ router.get('/', (req, res) => {
 
   //create new pet
   router.post('/',upload.single('img-post'),(req, res) => {
-    console.log(req.session.user_id, req.session.loggedIn);
+    console.log(req.body.user_id, req.body.loggedIn, req.body.username);
     Pet.create({
       name: req.body.name,
       pet_url: "test.com",
@@ -107,12 +108,12 @@ router.get('/', (req, res) => {
       pet_id_number: (req.body.Id_number != "" ? req.body.Id_number: null),
       color: req.body.colors,
       gender: req.body.gender,
-      age: req.body.age,
+      age: (req.body.age != "" ? req.body.age : null),
       diet: req.body.diet,
       reported_location: req.body.location,
       is_lost: (req.body.status === "lost" ? true: false),
-      image_path: (req.file ? "/" + req.file.path.replace("\\","/") : null),
-      user_id: req.session.user_id
+      image_path: (req.file ? req.file.path.replace("public","") : null),
+      user_id: req.body.user_id
     })
       .then(data => {
         res.redirect('/');
@@ -123,9 +124,52 @@ router.get('/', (req, res) => {
       });
   });
 
-  //update pet
-  router.put('/:id',(req, res) => {
-    Pet.update(req.body,
+
+  //delete photo route
+router.delete('/:id',(req, res) => {
+  Pet.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['image_path']
+  })
+  .then(dbPetData => {
+    if (!dbPetData) {
+      res.status(404).json({ message: 'No pet found with this id' });
+      return;
+    }
+    console.log(dbPetData.image_path);
+    fs.unlink("public"+dbPetData.image_path, () => {
+      
+      res.send("Photo deleted Successfully!")
+    
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+})
+
+  //update pet (need to use post route because html forms don't support put or delete)
+  router.post('/:id',upload.single('img-post'),(req, res) => {
+    console.log("Hello!  you are in the pets update route!");
+    //console.log(req.body, req.params.id, req.file.path);
+    Pet.update(
+      {
+        name: req.body.name,
+        pet_url: "test.com",
+        species: req.body.species,
+        breed: req.body.breed,
+        gender: req.body.gender,
+        age: (req.body.age != "" ? req.body.age : null),
+        pet_id_number: (req.body.Id_number != "" ? req.body.Id_number: null),
+        color: req.body.colors,
+        diet: req.body.diet,
+        reported_location: req.body.location,
+        is_lost: (req.body.status === "lost" ? true: false),
+        image_path: (req.file ? req.file.path.replace("public","") : null)
+      },
       {
         where: {
           id: req.params.id
@@ -137,7 +181,7 @@ router.get('/', (req, res) => {
           res.status(404).json({ message: 'No pet found with this id' });
           return;
         }
-        res.json(dbPetData);
+        res.redirect(`/pet/${req.params.id}`);
       })
       .catch(err => {
         console.log(err);
