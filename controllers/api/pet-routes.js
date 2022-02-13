@@ -4,6 +4,7 @@ const sequelize = require('../../config/connection');
 const multer  = require('multer');
 const upload = multer({ dest: 'public/uploads/' });
 const fs = require('fs');
+const withAuth = require("../../utils/auth");
 // get all pets
 router.get('/', (req, res) => {
     Pet.findAll({
@@ -98,7 +99,7 @@ router.get('/', (req, res) => {
 
 
   //create new pet
-  router.post('/',upload.single('img-post'),(req, res) => {
+  router.post('/',[withAuth,upload.single('img-post')],(req, res) => {
     console.log(req.body.user_id, req.body.loggedIn, req.body.username);
     Pet.create({
       name: req.body.name,
@@ -126,7 +127,7 @@ router.get('/', (req, res) => {
 
 
   //delete photo route
-router.delete('/:id',(req, res) => {
+router.delete('/:id',withAuth,(req, res) => {
   Pet.findOne({
     where: {
       id: req.params.id
@@ -152,7 +153,7 @@ router.delete('/:id',(req, res) => {
 })
 
   //update pet (need to use post route because html forms don't support put or delete)
-  router.post('/:id',upload.single('img-post'),(req, res) => {
+  router.post('/:id',[withAuth,upload.single('img-post')],(req, res) => {
     console.log("Hello!  you are in the pets update route!");
     //console.log(req.body, req.params.id, req.file.path);
     Pet.update(

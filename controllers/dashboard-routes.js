@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Pet, User, Comment } = require('../models');
-//const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
 module.exports = router;
 
 //get all of the pets for a specific user (get the posts that are displayed on the dashboard)
-router.get('/' ,(req, res) => {
+router.get('/',withAuth ,(req, res) => {
     Pet.findAll({
       where: {
         // use the ID from the session
@@ -55,7 +55,7 @@ router.get('/' ,(req, res) => {
   });
 
   //update a single pet (for updating a pet)
-  router.get("/edit/:id", (req, res) => {
+  router.get("/edit/:id",withAuth ,(req, res) => {
     Pet.findOne({
         where: {
           id: req.params.id
