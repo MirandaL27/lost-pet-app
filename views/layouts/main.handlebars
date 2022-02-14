@@ -17,7 +17,7 @@
 <body>
   
   <div class="wrapper">
-    <header>
+<header>
 
 
 <div class="row min-vh-100 no-gutters">
@@ -26,28 +26,57 @@
       <h1 class="text-center">
          <a href="/">Lost Pet App</a>
       </h1>
+  
       <button id="login" class="btn-no-style">
         log in
       </button>
-
+      {{#if loggedIn}}
        <button id="logout" class="btn-no-style">
          logout
       </button> 
-      
+       {{/if}}
   
       <p class="d-none d-lg-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi voluptas architecto ipsa
         excepturi aut non
         laudantium sequi fugit officiis optio deleniti asperiores rem eius laborum maxime blanditiis culpa, quis iste?
       </p>
+    
+    {{#if loggedIn}}
+    <main>
+      <ol class="post-list">
+  <li>
+    <article class="post">
+      <div class="title">
+        <a href="{{post_url}}" target="_blank">{{title}}</a>
+        <span>({{post_url}})</span>
+      </div>
+      <div class="meta">
+        {{vote_count}} point(s) by {{user.username}} on
+        {{created_at}}
+        |
 
+
+        <a href="/post/{{id}}">{{comments.length}} comment(s)</a>
+      </div>
+    </article>
+  </li>
+</ol>
+    </main>
+    {{/if}}
+    
     <main>
       {{{ body }}}
     </main>
+     
+
     <footer>
       We hope all pets find their homes!
     </footer>
   </div>
 
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
+{{/if}}
 </body>
 
 </html>
