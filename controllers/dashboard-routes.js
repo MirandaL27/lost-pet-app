@@ -3,10 +3,11 @@ const sequelize = require('../config/connection');
 const { Pet, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-module.exports = router;
 
 //get all of the pets for a specific user (get the posts that are displayed on the dashboard)
 router.get('/',withAuth ,(req, res) => {
+  console.log(req.session);
+
     Pet.findAll({
       where: {
         // use the ID from the session
@@ -46,7 +47,7 @@ router.get('/',withAuth ,(req, res) => {
       .then(dbPostData => {
         // serialize data before passing to template
         const pets = dbPostData.map(post => post.get({ plain: true }));
-        res.render('user', { pets, loggedIn: true });
+        res.render('dashboard', { pets, loggedIn: true });
       })
       .catch(err => {
         console.log(err);
@@ -101,4 +102,7 @@ router.get('/',withAuth ,(req, res) => {
          loggedIn: true
         });
       })
-  })
+  });
+
+
+module.exports = router;
