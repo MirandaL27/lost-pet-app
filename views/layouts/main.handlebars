@@ -16,67 +16,12 @@
 
 <body>
   
-<<<<<<< HEAD
-  <div class="wrapper">
-<header>
-
-
-<div class="row min-vh-100 no-gutters">
-    <header class="col-12 col-lg-3 bg-dark text-light sticky-top d-flex flex-column p-4 p-lg-3">
-=======
 <div class="wrapper w-100">
     <header class="bg-dark text-light sticky-top d-flex">
->>>>>>> main
       
       <h1 class="col-lg-5 p-4">
          <a href="/">Lost Pet App</a>
       </h1>
-<<<<<<< HEAD
-  
-      <button id="login" class="btn-no-style">
-        log in
-      </button>
-      {{#if loggedIn}}
-       <button id="logout" class="btn-no-style">
-         logout
-      </button> 
-       {{/if}}
-  
-      <p class="d-none d-lg-block">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi voluptas architecto ipsa
-        excepturi aut non
-        laudantium sequi fugit officiis optio deleniti asperiores rem eius laborum maxime blanditiis culpa, quis iste?
-      </p>
-    
-    {{#if loggedIn}}
-    <main>
-      <ol class="post-list">
-  <li>
-    <article class="post">
-      <div class="title">
-        <a href="{{post_url}}" target="_blank">{{title}}</a>
-        <span>({{post_url}})</span>
-      </div>
-      <div class="meta">
-        {{vote_count}} point(s) by {{user.username}} on
-        {{created_at}}
-        |
-
-
-        <a href="/post/{{id}}">{{comments.length}} comment(s)</a>
-      </div>
-    </article>
-  </li>
-</ol>
-    </main>
-    {{/if}}
-    
-    <main>
-      {{{ body }}}
-    </main>
-     
-
-    <footer>
-=======
       <nav class="row col-lg-7">
         {{#if loggedIn}}
         <a class="col-lg-4 text-center my-auto h4" href="/dashboard">Dashboard</a>
@@ -89,7 +34,6 @@
       {{{ body }}}
     </main>
     <footer class="bg-dark text-light p-4">
->>>>>>> main
       We hope all pets find their homes!
     </footer>
 </div>
