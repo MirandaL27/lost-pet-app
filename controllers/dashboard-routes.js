@@ -25,7 +25,7 @@ router.get('/',withAuth ,(req, res) => {
         'age',
         'diet',
         'reported_location',
-        'is_let',
+        'is_lost',
         'created_at',
         'image_path'
       ],
@@ -47,7 +47,9 @@ router.get('/',withAuth ,(req, res) => {
       .then(dbPetData => {
         // serialize data before passing to template
         const pets = dbPetData.map(pet => pet.get({ plain: true }));
-        res.render('dashboard', { pets, loggedIn: true });
+        const username = pets[0].user.username;
+        const isDashboard = true;
+        res.render('dashboard', { pets, username, isDashboard, loggedIn: true });
       })
       .catch(err => {
         console.log(err);
@@ -73,7 +75,7 @@ router.get('/',withAuth ,(req, res) => {
             'age',
             'diet',
             'reported_location',
-            'is_let',
+            'is_lost',
             'created_at',
             'image_path'
         ],
