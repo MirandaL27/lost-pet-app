@@ -3,10 +3,11 @@ const sequelize = require('../config/connection');
 const { Pet, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-module.exports = router;
 
-//get all of the pets for a specific user (get the posts that are displayed on the dashboard)
+//get all of the pets for a specific user (get the pets that are displayed on the dashboard)
 router.get('/',withAuth ,(req, res) => {
+  console.log(req.session);
+
     Pet.findAll({
       where: {
         // use the ID from the session
@@ -24,7 +25,7 @@ router.get('/',withAuth ,(req, res) => {
         'age',
         'diet',
         'reported_location',
-        'is_lost',
+        'is_let',
         'created_at',
         'image_path'
       ],
@@ -43,10 +44,10 @@ router.get('/',withAuth ,(req, res) => {
         }
       ]
     })
-      .then(dbPostData => {
+      .then(dbPetData => {
         // serialize data before passing to template
-        const pets = dbPostData.map(post => post.get({ plain: true }));
-        res.render('user', { pets, loggedIn: true });
+        const pets = dbPetData.map(pet => pet.get({ plain: true }));
+        res.render('dashboard', { pets, loggedIn: true });
       })
       .catch(err => {
         console.log(err);
@@ -72,7 +73,7 @@ router.get('/',withAuth ,(req, res) => {
             'age',
             'diet',
             'reported_location',
-            'is_lost',
+            'is_let',
             'created_at',
             'image_path'
         ],
@@ -91,8 +92,8 @@ router.get('/',withAuth ,(req, res) => {
           }
         ]
       })
-      .then(dbPostData => {
-        const pet = dbPostData.get({ plain: true });
+      .then(dbPetData => {
+        const pet = dbPetData.get({ plain: true });
         const session = {user_id: req.session.user_id, username: req.session.username};
         //console.log(pet);
         res.render('update-pet', {
@@ -101,4 +102,7 @@ router.get('/',withAuth ,(req, res) => {
          loggedIn: true
         });
       })
-  })
+  });
+
+
+module.exports = router;

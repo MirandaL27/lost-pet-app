@@ -4,41 +4,7 @@ const sequelize = require('../config/connection');
 
 //Pet model
 class Pet extends Model {
-    // static upvote(body, models) {
-    //     return models.Vote.create({
-    //         user_id: body.user_id,
-    //         pet_id: body.pet_id
-    //     })
-    //     .then(() => {
-    //         return Pet.findOne({
-    //             where: {
-    //                 id: body.pet_id
-    //             },
-    //             attributes: [
-    //                 'id',
-    //                 'pet_url',
-    //                 'name',
-    //                 'specie',
-    //                 'pet-id-number',
-    //                 'color',
-    //                 'gender',
-    //                 'diet',
-    //                 'reported-location'
-    //                 [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE pet.id = vote.pet_id)')]
-    //             ],
-    //             include: [
-    //                 {
-    //                 model: models.Comment,
-    //                 attributes: ['id', 'comment_text', 'pet_id', 'user_id', 'created_at'],
-    //                 include: {
-    //                     model: models.User,
-    //                     attributes: ['username']
-    //                 }
-    //              }
-    //             ]
-    //         });
-    //     });
-    // }
+  
 }
 //fields and colums for pet model
 Pet.init(

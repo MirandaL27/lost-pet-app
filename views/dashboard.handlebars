@@ -1,0 +1,29 @@
+<section>
+    <h2>Add Pet</h2>
+
+    <form class="new-pet-form">
+        <div>
+            <label for="pet-title">Title</label>
+            <input type="text" id="pet-title" name="pet-title" />
+        </div>
+        <div>
+            <label for="pet-url">Link</label>
+            <input id="pet-url" name="pet-url" />
+        </div>
+        <button type="submit" class="btn">Add</button>
+    </form>
+</section>
+
+{{#if pet.length}}
+<section>
+    <h2>All pets</h2>
+    <ol>
+        {{#each pets as |pet|}}
+        <li>
+            {{> single-pet pet}}
+            <a href="/dashboard/edit/{{pet.id}}" class="edit-link">Edit pet</a>
+        </li>
+        {{/each}}
+    </ol>
+</section>
+{{/if}}
