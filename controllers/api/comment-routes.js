@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Comment } = require('../../models');
+const withAuth = require("../../utils/auth")
 
 router.get('/', (req, res) => {
   Comment.findAll()
@@ -8,7 +9,7 @@ router.get('/', (req, res) => {
   })
 });
 
-router.post('/', async(req, res) => {
+router.post('/',withAuth,async(req, res) => {
   try{
     if(req.session){
       let data = await Comment.create({
@@ -24,5 +25,6 @@ router.post('/', async(req, res) => {
     res.status(400).json(err);
   }
 });
+
 
 module.exports = router;

@@ -1,0 +1,16 @@
+.btn-no-style{
+    border: none;
+    background-color: transparent;
+    color: rgb(33, 128, 252);
+    display: inline-block;
+}
+
+.btn-no-style:hover{
+    color: rgb(0, 89, 255);
+    text-decoration: underline;
+    display: inline-block;
+}
+
+.border-3{
+    border-width:3px !important;
+}

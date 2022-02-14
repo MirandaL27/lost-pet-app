@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Pet, User, Comment } = require('../models');
-
+const helpers = require("../utils/helpers")
 //render homepage (all pets from all users)
 router.get('/', (req, res) => {
-
+  let whereObj = helpers.parseQueryString(req.query);
   Pet.findAll({
     attributes: [
       'id',
@@ -22,6 +22,7 @@ router.get('/', (req, res) => {
       'created_at',
       'image_path'
     ],
+    where: whereObj,
     include: [
       {
         model: Comment,
@@ -40,6 +41,7 @@ router.get('/', (req, res) => {
     .then(dbPetData => {
       // pass a single post object into the homepage template
       const pets = dbPetData.map(pet => pet.get({ plain: true }));
+
       res.render('homepage', {
         pets,
         loggedIn: req.session.loggedIn
@@ -110,12 +112,15 @@ router.get('/', (req, res) => {
   });
 //render add pet page
   router.get('/add/pet' , (req, res) => {
+    console.log(req.session);
     if(!req.session.loggedIn){
       res.redirect('/');
       return;
     }
-    res.render('add-pet');
+    const session = {loggedIn: req.session.loggedIn, user_id : req.session.user_id, username: req.session.username};
+    res.render('add-pet', session);
   });
+
 
   //render login page
 router.get('/login', (req, res) => {
@@ -125,7 +130,6 @@ router.get('/login', (req, res) => {
   }
   res.render('login');
 });
-
 
 
 module.exports = router;
