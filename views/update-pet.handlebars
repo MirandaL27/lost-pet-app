@@ -1,0 +1,92 @@
+
+<form action = "/api/pets/{{pet.id}}" enctype="multipart/form-data" class ="pet-image-upload-form bg-secondary text-white p-4" method="POST">
+    <h2>Update Pet Information:</h2>
+    <div class="text-section row">
+        <div class="col-lg-6 col-sm-12">
+            <div class="name-wrapper row p-2">
+                <label class="col-4">Name: </label>
+                <input class="col-8" type="text" name="name" value="{{pet.name}}" required />
+            </div>
+            <div class="species-wrapper row p-2">
+                <label class="col-4" >Species: </label>
+                <input class="col-8" type="text" name="species" value="{{pet.species}}" required />
+            </div>
+            <div class="breed-wrapper row p-2">
+                <label class="col-4" >Breed: </label>
+                <input class="col-8" type="text" name="breed" value="{{pet.breed}}" />
+            </div>
+            <div class="gender-wrapper row p-2">
+                <label class="col-4" >Gender: </label>
+                <select class="col-8" name="gender" id="gender" value="{{pet.gender}}">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="age-wrapper row p-2">
+                <label class="col-4">Age: </label>
+                <input class="col-8" type="number" min="0" name="age" value="{{pet.age}}" />
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <div class="id-number-wrapper row p-2">
+                <label class="col-4">Id number: </label>
+                <input class="col-8" type="text" name="Id_number" minlength="8" pattern="[0-9]+$" value="{{pet.pet_id_number}}" />
+            </div>
+            <div class="color-wrapper row p-2">
+                <label class="col-4">Color: </label>
+                <select class="col-8" name="colors" id="colors" value="{{pet.color}}">
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="grey">Grey</option>
+                    <option value="brown">Brown</option>
+                    <option value="red">Red</option>
+                    <option value="pink">Pink</option>
+                    <option value="orange">Orange</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="purple">purple</option>
+                </select>
+            </div>
+            <div class="diet-wrapper row p-2">
+                <label class="col-4">Diet: </label>
+                <input class="col-8" type="text" name="diet" value="{{pet.diet}}" />
+            </div>
+            <div class="last-known-location row p-2">
+                <label class="col-4" >Last Known Location: </label>
+                <input class="col-8" type="text" name="location" value="{{pet.reported_location}}" />
+            </div>
+            <div class="status-container row p-2">
+                <label class="col-4">Status: </label>
+                <select class="col-8" name="status" id="status" value="{{pet.is_lost}}">
+                    <option value="lost">Lost</option>
+                    <option value="found">Found</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class = "image-section">
+        {{#if pet.image_path}}
+        <div class="file-uploaded">
+            <label>File uploaded: <span class="path">{{pet.image_path}}</span></label>
+            <button name = "different-photo" class="different-photo" type="button">Delete Image</button>
+        </div>
+        {{else}}
+        <div class="upload-a-pic">
+            <label>Upload pet picture: </label>
+            <input type="file" name="img-post"/>
+        </div>
+        {{/if}}
+    </div>
+    <div hidden>
+        <input type="text" name = "loggedIn" value="{{loggedIn}}" readonly/>
+        <input type="text" name = "user_id" value="{{session.user_id}}" readonly/>
+        <input type="text" name = "username" value="{{session.username}}" readonly/>
+    </div>
+    <div>
+        <input type="submit" value="Submit" />
+    </div>
+</form>
+{{#if pet.image_path}}
+<script src="/javascript/update-pet.js"></script>
+{{/if}}

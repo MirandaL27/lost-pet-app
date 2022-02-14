@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Pet, Comment} = require("../../models");
+const withAuth = require('../../utils/auth');
 
 //get all users
 router.get('/', async (req, res) => {
@@ -52,7 +53,7 @@ router.get('/:id', async (req, res) => {
 });
 
 //create new user
-router.post('/',async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try{
     let data = await User.create({
       username: req.body.username,
@@ -119,7 +120,7 @@ router.post('/logout', (req, res) => {
 });
 
     //update a user
-router.put('/:id', async (req, res) => {
+router.put('/:id',withAuth, async (req, res) => {
   try{
     let data = await User.update(req.body, {
       individualHooks: true,
