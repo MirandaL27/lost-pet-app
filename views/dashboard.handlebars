@@ -1,14 +1,14 @@
 <section>
-    <h2>Add Post</h2>
+    <h2>Add Pet</h2>
 
-    <form class="new-post-form">
+    <form class="new-pet-form">
         <div>
-            <label for="post-title">Title</label>
-            <input type="text" id="post-title" name="post-title" />
+            <label for="pet-title">Title</label>
+            <input type="text" id="pet-title" name="pet-title" />
         </div>
         <div>
-            <label for="post-url">Link</label>
-            <input id="post-url" name="post-url" />
+            <label for="pet-url">Link</label>
+            <input id="pet-url" name="pet-url" />
         </div>
         <button type="submit" class="btn">Add</button>
     </form>
@@ -18,10 +18,10 @@
 <section>
     <h2>All pets</h2>
     <ol>
-        {{#each posts as |post|}}
+        {{#each pets as |pet|}}
         <li>
             {{> single-pet pet}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+            <a href="/dashboard/edit/{{pet.id}}" class="edit-link">Edit pet</a>
         </li>
         {{/each}}
     </ol>
