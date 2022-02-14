@@ -1,46 +1,68 @@
 
-<form action = "/api/pets" enctype="multipart/form-data" class ="pet-image-upload-form" method="POST">
+<form action = "/api/pets" enctype="multipart/form-data" class ="pet-image-upload-form bg-secondary text-light p-4" method="POST">
     <h2>Enter Pet Information:</h2>
-    <div class="text-section">
-        <label>Name: </label>
-        <input type="text" name="name" required/>
-        <label>Species: </label>
-        <input type="text" name = "species" required/>
-        <label>Breed: </label>
-        <input type="text" name="breed"/>
-        <label>Gender: </label>
-        <select name="gender" id="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select>
-        <label>Age: </label>
-        <input type="number" min="0" name="age"/>
-        <label>Id number: </label>
-        <input type="text" name="Id_number" minlength = "8" pattern="[0-9]+$"/>
-        <label>Color: </label>
-        <select name="colors" id="colors">
-            <option value="white">White</option>
-            <option value="black">Black</option>
-            <option value="grey">Grey</option>
-            <option value="brown">Brown</option>
-            <option value="red">Red</option>
-            <option value="pink">Pink</option>
-            <option value="orange">Orange</option>
-            <option value="yellow">Yellow</option>
-            <option value="green">Green</option>
-            <option value="blue">Blue</option>
-            <option value="purple">purple</option>
-        </select>     
-        <label>Diet: </label>
-        <input type="text" name="diet"/>
-        <label>Last Known Location: </label>
-        <input type="text" name="location"/>
-        <div class="status-container">
-            <label>Status: </label>
-            <select name="status" id="status">
+    <div class="text-section row">
+        <div class="first-column col-lg-6 col-sm-12">
+            <div class="name-wrapper row p-2">
+                <label class="col-4">Name: </label>
+                <input class="col-8" type="text" name="name" required/>
+            </div>
+            <div class="species-wrapper row p-2">
+                <label class="col-4">Species: </label>
+                <input class="col-8" type="text" name = "species" required/>
+            </div>
+            <div class="breed-wrapper row p-2">
+                <label class="col-4">Breed: </label>
+                <input class="col-8" type="text" name="breed"/>
+            </div>
+            <div class="gender-wrapper row p-2">
+                 <label class="col-4">Gender: </label>
+                <select class="col-8" name="gender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                </select>   
+            </div>
+            <div class="age-wrapper row p-2">
+                <label class="col-4">Age: </label>
+                <input class="col-8" type="number" min="0" name="age"/>
+            </div>
+        </div>
+        <div class="second-column col-lg-6 col-sm-12">
+            <div class="id-number-wrapper row p-2">
+                <label class="col-4">Id number: </label>
+                <input class="col-8" type="text" name="Id_number" minlength = "8" pattern="[0-9]+$"/>
+            </div>
+            <div class="color-wrapper row p-2">
+                <label class="col-4">Color: </label>
+                <select class="col-8" name="colors" id="colors">
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="grey">Grey</option>
+                    <option value="brown">Brown</option>
+                    <option value="red">Red</option>
+                    <option value="pink">Pink</option>
+                    <option value="orange">Orange</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="purple">purple</option>
+                </select>
+            </div>
+            <div class="diet-wrapper row p-2">
+                <label class="col-4">Diet: </label>
+                <input class="col-8" type="text" name="diet"/>
+            </div>
+            <div class="last-known-location-wrapper row p-2">
+                <label class="col-4">Last Known Location: </label>
+                <input class="col-8" type="text" name="location"/>
+            </div>
+        <div class="status-container row p-2">
+            <label class="col-4">Status: </label>
+            <select class="col-8" name="status" id="status">
                 <option value="lost">Lost</option>
                 <option value="found">Found</option>
             </select>
+        </div>
         </div>
     </div>
     <div class = "image-section">

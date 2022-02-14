@@ -1,9 +1,11 @@
 {{#if loggedIn}}
-<article class = "pet">
-    <div class="pet-header">
-      <h2>Pet Information</h2>  
+<div class="page-wrapper bg-secondary text-light">
+<article class="pet">
+    <div class="row pet-header text-center col-12 ">
+      <h2 class="p-4">Pet Information</h2>  
     </div>
-    <div class="pet-details">
+    <div class="pet-section-wrapper row">
+        <div class="pet-details col-sm-12 col-lg-6 pl-sm-4 pl-lg-5">
         <h3>Name: {{pet.name}}</h3>
         <p>Species: {{pet.species}}</p>
         <p>Breed: {{pet.breed}}</p>
@@ -19,48 +21,53 @@
         <p>Status: Found</p>
         {{/if}}
     </div>
-    <div class="pet-image">
+    <div class="pet-image col-sm-12 col-lg-6 p-4">
         {{#if pet.image_path}}
-        <img src="{{pet.image_path}}">
+        <img class="w-75 h-75 border border-3 border-dark rounded shadow" src="{{pet.image_path}}">
         {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
         {{else}}
         <p>No Image was provided for this pet.</p>
         {{/if}}
     </div>
+    </div>
 </article>
-<article class="owner">
+<article class="owner pl-lg-4 pl-sm-4 bg-dark">
     <div class="owner-header">
         <h2>Owner information</h2>
     </div>
     <div class="owner-details">
-    <h3>User Name: {{pet.user.username}}</h3>
+    <h3>Username: {{pet.user.username}}</h3>
     <p>Email: {{pet.user.email}}</p>
     <p>Preferred Contact Method: {{pet.user.contactMethod}}</p>        
     </div>
 </article>
-<article class="comments">
-    <h2>Comments: </h2>
+<article class="comments pl-lg-4 pl-sm-4 row">
+    <div class="comment-wrapper col-lg-6 col-sm-12">
+    <h2>Comments </h2>
     {{#each pet.comments as |comment|}}
         <div class="comment">
-            <p>Comment: {{comment.comment_text}}</p>
+            <p>Text: {{comment.comment_text}}</p>
             <p>Posted By: {{comment.user.username}}</p>
-            <p>Created: {{comment.created_at}}</p>
+            <p>Created: {{format_date comment.created_at}}</p>
         </div>
     {{/each}}
-    <div class="comment-add">
+    </div>
+    <div class="comment-add col-lg-6 col-sm-12">
         <div class="comment-header">
-            <h2>Add a comment:</h2>
+            <h2>Add a comment</h2>
         </div>
-        <label>Comment Text:</label>
-        <textarea name="comment_text" class="comment-text" id="comment-text"></textarea>
-        <button class="add-comment">Post</button>
+        <div class="comment-add-wrapper pl-lg-4 pl-sm-4">
+            <label class="row">Comment Text:</label>
+            <textarea name="comment_text" class="comment-text row" id="comment-text"></textarea>
+            <button class="add-comment row m-2">Post</button>
+        </div>
     </div>
 </article>
 {{else}}
 <h2>You are not logged in!</h2>
 <a href = "/login">Login</a>
 {{/if}}
-
+</div>
 {{#if loggedIn}}
 <script src = "/javascript/comments.js"></script>
 {{/if}}
