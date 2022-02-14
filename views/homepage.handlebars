@@ -3,36 +3,46 @@
         <h1>Lets Get Your Lost Pet Home!</h1>
     </div>
     <div class="login">
-        <h3>
-        <input type="text" name="username" required />
-        <input type="text" name="password" required />
-        <button type="submit">login</button>
-        <input type="text" name="create-login" required />
-        <button type="submit">create profile</button>
-        </h3>
+        <div class="row">
+            <h3 class="col-6">
+                <input type="text" name="username" required> Username: </input>
+                <input type="text" name="password" required> Password: </input>
+                <button type="submit">Login</button>
+            </h3>
+        </div>
     </div>
-    <div class="lost-pets">
-        <h2>
-        <p class="pet-image">Recently Lost:</p>
-        {{#if pet.image_path}}
-        <img src="{{pet.image_path}}">
-        {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
-        {{else}}
-        <p>No Image was provided for this pet.</p>
-        {{/if}}
-        </h2>
+    <div class="row">
+        <div class="col-9">
+            <div class="lost-pets">
+                <h2 class="pet-image">Recently Lost:</h2>
+                {{#if pet.image_path}}
+                <img src="{{pet.image_path}}">
+                {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
+                {{else}}
+                <p>No Image was provided for this pet.</p>
+                {{/if}}
+                !!! {{each statements}}
+            </div>
+            <div class="reunited-pets">
+                <h2 class="pet-image">Reunited Pets:</h2>
+                {{#if pet.image_path}}
+                <img src="{{pet.image_path}}">
+                {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
+                {{else}}
+                <p>No Image was provided for this pet.</p>
+                {{/if}}
+                !!! {{each statements}}
+            </div>
+        </div>
     </div>
-    <div class="reunited-pets">
-        <h2>
-        <p class="pet-image">Reunited Pets:</p>
-        {{#if pet.image_path}}
-        <img src="{{pet.image_path}}">
-        {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
-        {{else}}
-        <p>No Image was provided for this pet.</p>
-        {{/if}}
-        </h2>
-    </div>
+    <div>
+        <div class="lost-pets">
+            <div class="row">
+                <div class="col-3">
+                    <div> Search</div>
+                    <!-- insert search content
+                    -->
+
 </article>
 {{else}}
 <h2>You are not logged in!</h2>
