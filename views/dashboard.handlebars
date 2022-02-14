@@ -9,15 +9,16 @@
         <h3>Pets belonging to {{username}}:</h3>
         {{#each pets as |pet|}}
         <div class="row pet-wrapper">
-            <h4 class="col-3">Name: {{pet.name}}</h4>
+            <h4 class="col-2">Name: {{pet.name}}</h4>
             <p class="col-2">Species: {{pet.species}}</p>
             {{#if pet.reported_location}}
-            <p class="col-3">Last Known Location: {{pet.reported_location}}</p>
+            <p class="col-2">Last Known Location: {{pet.reported_location}}</p>
             {{else}}
-            <p class="col-3">Location Unknown</p>
+            <p class="col-2">Location Unknown</p>
             {{/if}}
             <p class="col-2" >Date Created: {{format_date pet.created_at}}</p>
             <a class="col-2 dashboard-link" href="/dashboard/edit/{{pet.id}}">Edit</a>
+            <a class="col-2 dashboard-link" href="/pet/{{pet.id}}">Pet Details</a>
         </div>
         {{/each}}
     </section>
