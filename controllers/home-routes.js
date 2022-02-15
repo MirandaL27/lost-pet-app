@@ -5,6 +5,10 @@ const helpers = require("../utils/helpers")
 //render homepage (all pets from all users)
 router.get('/', (req, res) => {
   let whereObj = helpers.parseQueryString(req.query);
+  let userWhereObj = {};
+  if(req.query.username){
+    userWhereObj.username = req.query.username;
+  }
   Pet.findAll({
     attributes: [
       'id',
@@ -22,6 +26,7 @@ router.get('/', (req, res) => {
       'created_at',
       'image_path'
     ],
+    order: [['created_at', 'DESC']],
     where: whereObj,
     include: [
       {
@@ -34,7 +39,8 @@ router.get('/', (req, res) => {
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: ['username'],
+        where:userWhereObj
       }
     ]
   })

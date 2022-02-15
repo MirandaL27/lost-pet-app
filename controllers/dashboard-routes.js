@@ -29,6 +29,7 @@ router.get('/',withAuth ,(req, res) => {
         'created_at',
         'image_path'
       ],
+      order: [['created_at', 'DESC']], 
       include: [
         {
           model: Comment,
