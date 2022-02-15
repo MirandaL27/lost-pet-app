@@ -14,6 +14,18 @@
     </form>
 </section>
 
+<ol class="items">
+{{#each pets as |pet| }}
+<li>
+    {{> petimage }}
+</li>
+<li>
+    
+</li>
+{{/each}}
+</ol>
+
+
 {{#if pet.length}}
 <section>
     <h2>All pets</h2>

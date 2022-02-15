@@ -17,27 +17,31 @@
 <body>
   
 <div class="wrapper w-100">
-    <header class="bg-dark text-light sticky-top d-flex">
-      
+
+    <header class="bg-dark text-light sticky-top d-flex"> 
       <h1 class="col-lg-5 p-4">
          <a href="/">Lost Pet App</a>
       </h1>
       <nav class="row col-lg-7">
         {{#if loggedIn}}
         <a class="col-lg-4 text-center my-auto h4" href="/dashboard">Dashboard</a>
+        <button id="logout" class="btn-no-style">logout</button>
+         {{else}}
+        <a class="col-lg-4 text-center my-auto h4" href="/login">signup</a>
         {{/if}}
-        <a class="col-lg-4 text-center my-auto h4" href="/login">Login</a>
         <button id="logout" class="btn-no-style col-lg-4 text-center my-auto h4">Logout</button>
       </nav>
   </header>
+
     <main>
       {{{ body }}}
     </main>
+
     <footer class="bg-dark text-light p-4">
       We hope all pets find their homes!
     </footer>
-</div>
 
+</div>
 {{#if loggedIn}}
 <script src="/javascript/logout.js"></script>
 {{/if}}

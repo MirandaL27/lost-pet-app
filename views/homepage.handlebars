@@ -4,15 +4,38 @@
     <div class="homepage">
         <h1>Lets Get Your Lost Pet Home!</h1>
     </div>
-    <div class="login">
+
+{{!-- 
+    <div class="login-form">
         <div class="row">
             <h3 class="col-6">
                 <input type="text" name="username" required> Username: </input>
-                <input type="text" name="password" required> Password: </input>
+                <input type="password" id="password-login"></input>
                 <button type="submit">Login</button>
             </h3>
         </div>
     </div>
+ --}}
+ {{> login }}
+  {{#if loggedIn}}
+       {{> dashboard }}
+  {{else}}
+       {{> signup }}
+   {{/if}}
+{{!-- <form class="login-form row">
+  <div>
+    <label for="email-login col-6">email:</label>
+    <input type="text" id="email-login" />
+  </div>
+  <div>
+    <label for="password-login col-6">password:</label>
+    <input type="password" id="password-login" />
+  </div>
+  <div>
+    <button type="submit">login</button>
+  </div>
+</form> --}}
+
     <div class="row">
         <div class="col-9">
             <div class="lost-pets">
@@ -23,7 +46,7 @@
                 {{else}}
                 <p>No Image was provided for this pet.</p>
                 {{/if}}
-                !!! {{each statements}}
+                {{!-- !!! {{each statements}} --}}
             </div>
             <div class="reunited-pets">
                 <h2 class="pet-image">Reunited Pets:</h2>
@@ -33,7 +56,7 @@
                 {{else}}
                 <p>No Image was provided for this pet.</p>
                 {{/if}}
-                !!! {{each statements}}
+                {{!-- !!! {{each statements}} --}}
             </div>
         </div>
     </div>
