@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body class=>
   
 <div class="wrapper w-100">
 
@@ -28,19 +28,14 @@
         <a class="col-lg-4 text-center my-auto h4" href="/">Home</a>
         {{else}}
         <a class="col-lg-4 text-center my-auto h4" href="/dashboard">Dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
-         {{else}}
-        <a class="col-lg-4 text-center my-auto h4" href="/login">signup</a>
         {{/if}}
         <button id="logout" class="btn-no-style col-lg-4 text-center my-auto h4">Logout</button>
-        {{else}}
-        <a class="col-lg-4 text-center my-auto h4" href="/login">Login</a>
         {{/if}}
         
       </nav>
   </header>
 
-    <main>
+    <main class="bg-secondary">
       {{{ body }}}
     </main>
 

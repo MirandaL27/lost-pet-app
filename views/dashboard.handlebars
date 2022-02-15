@@ -4,7 +4,7 @@
         <a class="dashboard-link h3" href="/add/pet">Create New Pet</a>
     </section>
 
-    {{#if pets.length}}
+    {{!-- {{#if pets.length}}
     <section class="p-4 pet-section-wrapper">
         <h3>Pets belonging to {{username}}:</h3>
 
@@ -24,18 +24,18 @@
     <ol class="items">
         {{#each pets as |pet| }}
         <li>
-            {{> petimage }}
+            {{> petImage }}
         </li>
         <li>
 
         </li>
         {{/each}}
     </ol>
-    {{/if}}
+    {{/if}} --}}
 
-    {{#if pet.length}}
+    {{#if pets.length}}
     <section>
-        <h2>All pets</h2>
+        <h2>Pets belonging to {{username}}:</h2>
         <ol>
             {{#each pets as |pet|}}
             <div class="row pet-wrapper">

@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 
 
 //get all of the pets for a specific user (get the pets that are displayed on the dashboard)
-router.get('/',withAuth ,(req, res) => {
+router.get('/',(req, res) => {
   console.log(req.session);
 
     Pet.findAll({
@@ -48,7 +48,10 @@ router.get('/',withAuth ,(req, res) => {
       .then(dbPetData => {
         // serialize data before passing to template
         const pets = dbPetData.map(pet => pet.get({ plain: true }));
-        const username = pets[0].user.username;
+        let username;
+        if(pets.length != 0){
+          username = pets[0].user.username;
+        }
         const isDashboard = true;
         res.render('dashboard', { pets, username, isDashboard, loggedIn: true });
       })

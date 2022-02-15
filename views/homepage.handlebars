@@ -14,12 +14,12 @@
         </div>
     </div>
  --}}
- {{> login }}
+ {{!-- {{> login }}
   {{#if loggedIn}}
        {{> dashboard }}
   {{else}}
        {{> signup }}
-   {{/if}}
+   {{/if}} --}}
 {{!-- <form class="login-form row">
   <div>
     <label for="email-login col-6">email:</label>
@@ -34,6 +34,11 @@
   </div>
 </form> --}}
 
+{{#if loggedIn}}
+{{else}}
+    {{> signup }}
+   {{/if}}
+    {{#if loggedIn}}
     <div class="row">
         <div class="col-9">
             <div class="lost-pets">
@@ -58,7 +63,7 @@
             </div>
         </div>
     </div>
-        {{#if loggedIn}}
+        
         <div class="filter-wrapper bg-dark col-3 text-light">
             <h2 class="p-2">Search Filter:</h2>
             <div class="name-wrapper row p-2">
