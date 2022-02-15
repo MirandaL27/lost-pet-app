@@ -117,7 +117,7 @@ router.get('/', (req, res) => {
       user_id: req.body.user_id
     })
       .then(data => {
-        res.redirect('/');
+        res.redirect(`/pet/${data.id}`);
       })
       .catch(err => {
         console.log(err);
