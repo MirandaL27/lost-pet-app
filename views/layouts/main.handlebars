@@ -24,10 +24,16 @@
       </h1>
       <nav class="row col-lg-7">
         {{#if loggedIn}}
+        {{#if isDashboard}}
+        <a class="col-lg-4 text-center my-auto h4" href="/">Home</a>
+        {{else}}
         <a class="col-lg-4 text-center my-auto h4" href="/dashboard">Dashboard</a>
         {{/if}}
-        <a class="col-lg-4 text-center my-auto h4" href="/login">Login</a>
         <button id="logout" class="btn-no-style col-lg-4 text-center my-auto h4">Logout</button>
+        {{else}}
+        <a class="col-lg-4 text-center my-auto h4" href="/login">Login</a>
+        {{/if}}
+        
       </nav>
   </header>
     <main>
@@ -44,3 +50,6 @@
 </body>
 
 </html>
+{{#if loggedIn}}
+<script src="/javascript/logout.js"></script>
+{{/if}}
