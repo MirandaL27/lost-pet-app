@@ -14,12 +14,12 @@
         </div>
     </div>
  --}}
- {{> login }}
+ {{!-- {{> login }}
   {{#if loggedIn}}
        {{> dashboard }}
   {{else}}
        {{> signup }}
-   {{/if}}
+   {{/if}} --}}
 {{!-- <form class="login-form row">
   <div>
     <label for="email-login col-6">email:</label>
@@ -34,6 +34,11 @@
   </div>
 </form> --}}
 
+{{#if loggedIn}}
+{{else}}
+    {{> signup }}
+   {{/if}}
+    {{#if loggedIn}}
     <div class="row">
         <div class="col-9">
             <div class="lost-pets">
@@ -58,35 +63,37 @@
             </div>
         </div>
     </div>
-        {{#if loggedIn}}
+        
         <div class="filter-wrapper bg-dark col-3 text-light">
             <h2 class="p-2">Search Filter:</h2>
             <div class="name-wrapper row p-2">
                 <label class="col-4">Name: </label>
-                <input class="col-8" type="text" name="name" required/>
+                <input class="col-8 name" type="text" name="name"/>
             </div>
             <div class="species-wrapper row p-2">
                 <label class="col-4">Species: </label>
-                <input class="col-8" type="text" name = "species" required/>
+                <input class="col-8 species" type="text" name = "species"/>
             </div>
             <div class="breed-wrapper row p-2">
                 <label class="col-4">Breed: </label>
-                <input class="col-8" type="text" name="breed"/>
+                <input class="col-8 breed" type="text" name="breed"/>
             </div>
             <div class="gender-wrapper row p-2">
                  <label class="col-4">Gender: </label>
-                <select class="col-8" name="gender" id="gender">
+                <select class="col-8 gender" name="gender" id="gender">
+                <option selected value=""> -- select an option -- </option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 </select>   
             </div>
             <div class="age-wrapper row p-2">
                 <label class="col-4">Age: </label>
-                <input class="col-8" type="number" min="0" name="age"/>
+                <input class="col-8 age" type="number" min="0" name="age"/>
             </div>
             <div class="color-wrapper row p-2">
                 <label class="col-4">Color: </label>
-                <select class="col-8" name="colors" id="colors">
+                <select class="col-8 color" name="colors" id="colors">
+                    <option selected value=""> -- select an option -- </option>
                     <option value="white">White</option>
                     <option value="black">Black</option>
                     <option value="grey">Grey</option>
@@ -100,6 +107,10 @@
                     <option value="purple">purple</option>
                 </select>
             </div>
+            <div class="username-wrapper row p-2">
+                <label class="col-4">Username: </label>
+                <input class="col-8 username" type="text" name="username"/>
+            </div>
             <div class="row p-2">
                 <button class="clear-btn m-2">Clear</button>
                 <button class="search-btn m-2">Search</button>
@@ -107,3 +118,6 @@
         </div>
         {{/if}}
 </article>
+{{#if loggedIn}}
+    <script src="/javascript/filter.js"></script>
+{{/if}}

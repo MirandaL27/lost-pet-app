@@ -20,8 +20,8 @@ const parseQueryString = (params) => {
         if(params.species){
             finalObj.species = params.species;
         }
-        if(params.username){
-            finalObj.username = params.username;
+        if(params.age){
+            finalObj.age = params.age;
         }
     }
     else{
