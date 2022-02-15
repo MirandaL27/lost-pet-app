@@ -1,7 +1,7 @@
 //user login
 async function loginForm(event) {
     event.preventDefault();
-
+  
     const email = document.querySelector('#email-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
 
@@ -16,8 +16,12 @@ async function loginForm(event) {
         });
 
         if (response.ok) {
-            document.location.replace('/dashboard');
-        } else {
+            document.location.replace('dashboard');
+        } 
+        else if(response.status == 400){
+            alert("Incorrect username or password.");
+        }
+        else {
             alert(response.statusText);
         }
     }
