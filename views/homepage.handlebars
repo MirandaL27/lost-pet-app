@@ -1,7 +1,7 @@
 <article class="homepage">
-    
 
-{{!-- 
+
+    {{!--
     <div class="login-form">
         <div class="row">
             <h3 class="col-6">
@@ -11,33 +11,35 @@
             </h3>
         </div>
     </div>
- --}}
- {{!-- {{> login }}
-  {{#if loggedIn}}
-       {{> dashboard }}
-  {{else}}
-       {{> signup }}
-   {{/if}} --}}
-{{!-- <form class="login-form row">
-  <div>
-    <label for="email-login col-6">email:</label>
-    <input type="text" id="email-login" />
-  </div>
-  <div>
-    <label for="password-login col-6">password:</label>
-    <input type="password" id="password-login" />
-  </div>
-  <div>
-    <button type="submit">login</button>
-  </div>
-</form> --}}
-
-{{#if loggedIn}}
-{{else}}
+    --}}
+    {{!-- {{> login }}
+    {{#if loggedIn}}
+    {{> dashboard }}
+    {{else}}
     {{> signup }}
-   {{/if}}
+    {{/if}} --}}
+    {{!-- <form class="login-form row">
+        <div>
+            <label for="email-login col-6">email:</label>
+            <input type="text" id="email-login" />
+        </div>
+        <div>
+            <label for="password-login col-6">password:</label>
+            <input type="password" id="password-login" />
+        </div>
+        <div>
+            <button type="submit">login</button>
+        </div>
+    </form> --}}
+
+    {{#if loggedIn}}
+    {{else}}
+    {{> signup }}
+    {{/if}}
     {{#if loggedIn}}
     <div class="row">
+<<<<<<< HEAD
+=======
         <div class="col-9" float="right">
             <div class="lost-pets">
                 <h2 class="pet-image">Recently Lost:</h2>
@@ -62,31 +64,32 @@
         </div>
     </div>
         
+>>>>>>> 9cb42706d58ff89d1712283f3656973f4daae61a
         <div class="filter-wrapper bg-dark col-3 text-light">
             <h2 class="p-2">Search Filter:</h2>
             <div class="name-wrapper row p-2">
                 <label class="col-4">Name: </label>
-                <input class="col-8 name" type="text" name="name"/>
+                <input class="col-8 name" type="text" name="name" />
             </div>
             <div class="species-wrapper row p-2">
                 <label class="col-4">Species: </label>
-                <input class="col-8 species" type="text" name = "species"/>
+                <input class="col-8 species" type="text" name="species" />
             </div>
             <div class="breed-wrapper row p-2">
                 <label class="col-4">Breed: </label>
-                <input class="col-8 breed" type="text" name="breed"/>
+                <input class="col-8 breed" type="text" name="breed" />
             </div>
             <div class="gender-wrapper row p-2">
-                 <label class="col-4">Gender: </label>
+                <label class="col-4">Gender: </label>
                 <select class="col-8 gender" name="gender" id="gender">
-                <option selected value=""> -- select an option -- </option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                </select>   
+                    <option selected value=""> -- select an option -- </option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
             </div>
             <div class="age-wrapper row p-2">
                 <label class="col-4">Age: </label>
-                <input class="col-8 age" type="number" min="0" name="age"/>
+                <input class="col-8 age" type="number" min="0" name="age" />
             </div>
             <div class="color-wrapper row p-2">
                 <label class="col-4">Color: </label>
@@ -107,7 +110,7 @@
             </div>
             <div class="username-wrapper row p-2">
                 <label class="col-4">Username: </label>
-                <input class="col-8 username" type="text" name="username"/>
+                <input class="col-8 username" type="text" name="username" />
             </div>
             <div class="row p-2">
                 <button class="clear-btn m-2">Clear</button>
@@ -128,7 +131,14 @@
                 {{else}}
                 <p>No Image was provided for this pet.</p>
                 {{/if}}
-                {{!-- !!! {{each statements}} --}}
+                {{#each user as |user| }}
+                <li>
+                    {{> petImage }}
+                </li>
+                <li>
+
+                </li>
+                {{/each}}
             </div>
             <div class="reunited-pets">
                 <h2 class="pet-image">Reunited Pets:</h2>
@@ -138,13 +148,20 @@
                 {{else}}
                 <p>No Image was provided for this pet.</p>
                 {{/if}}
-                {{!-- !!! {{each statements}} --}}
+                {{#each user as |user| }}
+                <li>
+                    {{> petImage }}
+                </li>
+                <li>
+
+                </li>
+                {{/each}}
             </div>
         </div>
-    
-        </div>
-        {{/if}}
+
+    </div>
+    {{/if}}
 </article>
 {{#if loggedIn}}
-    <script src="/javascript/filter.js"></script>
+<script src="/javascript/filter.js"></script>
 {{/if}}
