@@ -1,17 +1,21 @@
 <article class="homepage">
 
-
- 
-
     {{#if loggedIn}}
     {{else}}
     {{> signup }}
     {{/if}}
     {{#if loggedIn}}
     <div class="row">
-        
-        <div class="filter-wrapper bg-dark col-3 text-light">
+        <div class="filter-wrapper bg-dark col-lg-3 col-sm-12 text-light">
             <h2 class="p-2">Search Filter:</h2>
+            <div class="status-wrapper row p-2">
+                <label class="col-4">Status: </label>
+                <select class="col-8 status" name="status" id="status">
+                    <option selected value=""> -- select an option -- </option>
+                    <option value="lost">Lost</option>
+                    <option value="found">Found</option>
+                </select>
+            </div>
             <div class="name-wrapper row p-2">
                 <label class="col-4">Name: </label>
                 <input class="col-8 name" type="text" name="name" />
@@ -62,48 +66,26 @@
                 <button class="search-btn m-2">Search</button>
             </div>
         </div>
-
-
-        <div class="col-9">
-            <div class="homepage">
-                <h1>Lets Get Your Lost Pet Home!</h1>
-            </div>
-            <div class="lost-pets">
-                <h2 class="pet-image">Recently Lost:</h2>
-                {{#if pet.image_path}}
-                <img src="{{pet.image_path}}">
-                {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
-                {{else}}
-                <p>No Image was provided for this pet.</p>
-                {{/if}}
-                {{#each user as |user| }}
-                <li>
-                    {{> petImage }}
-                </li>
-                <li>
-
-                </li>
-                {{/each}}
-            </div>
-            <div class="reunited-pets">
-                <h2 class="pet-image">Reunited Pets:</h2>
-                {{#if pet.image_path}}
-                <img src="{{pet.image_path}}">
-                {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
-                {{else}}
-                <p>No Image was provided for this pet.</p>
-                {{/if}}
-                {{#each user as |user| }}
-                <li>
-                    {{> petImage }}
-                </li>
-                <li>
-
-                </li>
-                {{/each}}
-            </div>
-        </div>
     </div>
+
+    <div class="col-lg-9 col-sm-12">
+        <div class="homepage">
+            <h1>Lets Get Your Lost Pet Home!</h1>
+        </div>
+        <div class="lost-pets">
+            <h2 class="pet-image">All Pets:</h2>
+            {{#each pets as |pet| }}
+            <ol>
+                <li>
+                    <h3>Name: {{pet.name}}</h3>
+                    <p>Species: {{pet.species}}</p>
+                    <p>Breed: {{pet.breed}}</p>
+                    <p>Gender: {{pet.gender}}</p>
+                    <p>Age: {{pet.age}}</p>
+                </li>
+            </ol>
+            {{/each}}
+        </div>
     </div>
     {{/if}}
 </article>
