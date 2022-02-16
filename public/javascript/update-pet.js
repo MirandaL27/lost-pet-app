@@ -2,6 +2,8 @@
 async function uploadPhotoHandler() {
     const imageDivEl = document.querySelector(".image-section"); 
     const path =  document.querySelector(".path").textContent;
+    document.querySelector(".path").value ="";
+    console.log("path inside javascript",path);
     //delete the file from the uploads folder
     
     const pet_id = window.location.toString().split('/')[
