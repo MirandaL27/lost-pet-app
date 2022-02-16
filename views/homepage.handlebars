@@ -1,88 +1,62 @@
 <article class="homepage">
 
-
-    {{!--
-    <div class="login-form">
-        <div class="row">
-            <h3 class="col-6">
-                <input type="text" name="username" required> Username: </input>
-                <input type="password" id="password-login"></input>
-                <button type="submit">Login</button>
-            </h3>
-        </div>
-    </div>
-    --}}
-    {{!-- {{> login }}
-    {{#if loggedIn}}
-    {{> dashboard }}
-    {{else}}
-    {{> signup }}
-    {{/if}} --}}
-    {{!-- <form class="login-form row">
-        <div>
-            <label for="email-login col-6">email:</label>
-            <input type="text" id="email-login" />
-        </div>
-        <div>
-            <label for="password-login col-6">password:</label>
-            <input type="password" id="password-login" />
-        </div>
-        <div>
-            <button type="submit">login</button>
-        </div>
-    </form> --}}
-
     {{#if loggedIn}}
     {{else}}
     {{> signup }}
     {{/if}}
     {{#if loggedIn}}
     <div class="row">
-        <div class="col-9" float="right">
-            <div class="lost-pets">
-                <h2 class="pet-image">Recently Lost:</h2>
-                {{#if pet.image_path}}
-                <img src="{{pet.image_path}}">
-                {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
-                {{else}}
-                <p>No Image was provided for this pet.</p>
-                {{/if}}
-                {{!-- !!! {{each statements}} --}}
+        <div class="filter-wrapper bg-dark col-3 text-light">
+            <h2 class="p-2">Search Filter:</h2>
+            <div class="name-wrapper row p-2">
+                <label class="col-4">Name: </label>
+                <input class="col-8 name" type="text" name="name" />
             </div>
-            <div class="reunited-pets">
-                <h2 class="pet-image">Reunited Pets:</h2>
-                {{#if pet.image_path}}
-                <img src="{{pet.image_path}}">
-                {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
-                {{else}}
-                <p>No Image was provided for this pet.</p>
-                {{/if}}
-                {{!-- !!! {{each statements}} --}}
+            <div class="species-wrapper row p-2">
+                <label class="col-4">Species: </label>
+                <input class="col-8 species" type="text" name="species" />
             </div>
-        </div>
-    </div>
-
-    <div class="filter-wrapper bg-dark col-3 text-light">
-        <h2 class="p-2">Search Filter:</h2>
-        <div class="name-wrapper row p-2">
-            <label class="col-4">Name: </label>
-            <input class="col-8 name" type="text" name="name" />
-        </div>
-        <div class="species-wrapper row p-2">
-            <label class="col-4">Species: </label>
-            <input class="col-8 species" type="text" name="species" />
-        </div>
-        <div class="breed-wrapper row p-2">
-            <label class="col-4">Breed: </label>
-            <input class="col-8 breed" type="text" name="breed" />
-        </div>
-        <div class="gender-wrapper row p-2">
-            <label class="col-4">Gender: </label>
-            <select class="col-8 gender" name="gender" id="gender">
-                <option selected value=""> -- select an option -- </option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
+            <div class="breed-wrapper row p-2">
+                <label class="col-4">Breed: </label>
+                <input class="col-8 breed" type="text" name="breed" />
+            </div>
+            <div class="gender-wrapper row p-2">
+                <label class="col-4">Gender: </label>
+                <select class="col-8 gender" name="gender" id="gender">
+                    <option selected value=""> -- select an option -- </option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="age-wrapper row p-2">
+                <label class="col-4">Age: </label>
+                <input class="col-8 age" type="number" min="0" name="age" />
+            </div>
+            <div class="color-wrapper row p-2">
+                <label class="col-4">Color: </label>
+                <select class="col-8 color" name="colors" id="colors">
+                    <option selected value=""> -- select an option -- </option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="grey">Grey</option>
+                    <option value="brown">Brown</option>
+                    <option value="red">Red</option>
+                    <option value="pink">Pink</option>
+                    <option value="orange">Orange</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="purple">purple</option>
+                </select>
+            </div>
+            <div class="username-wrapper row p-2">
+                <label class="col-4">Username: </label>
+                <input class="col-8 username" type="text" name="username" />
+            </div>
+            <div class="row p-2">
+                <button class="clear-btn m-2">Clear</button>
+                <button class="search-btn m-2">Search</button>
+            </div>
         </div>
         <div class="age-wrapper row p-2">
             <label class="col-4">Age: </label>
@@ -161,7 +135,10 @@
             {{/each}}
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ada9ec5fec6d99da9cf6c9e5af45b996fc5a4abc
     </div>
     {{/if}}
 </article>
