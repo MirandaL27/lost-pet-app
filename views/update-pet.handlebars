@@ -68,7 +68,8 @@
     <div class = "image-section">
         {{#if pet.image_path}}
         <div class="file-uploaded">
-            <label>File uploaded: <span class="path">{{pet.image_path}}</span></label>
+            <label>File uploaded:</label>
+            <input type="text" class="path" name="img_path" value="{{pet.image_path}}" readonly>
             <button name = "different-photo" class="different-photo" type="button">Delete Image</button>
         </div>
         {{else}}

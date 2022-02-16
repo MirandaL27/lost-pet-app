@@ -92,13 +92,12 @@ router.post('/login', (req, res) => {
       res.status(400).json({ message: 'Incorrect password!' });
       return;
     }
-    
     req.session.save(() => {
       // declare session variables
       req.session.user_id = dbUserData.id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
-
+  
       res.json({ user: dbUserData, message: 'You are now logged in!' });
     });
 
@@ -141,7 +140,7 @@ router.put('/:id',withAuth, async (req, res) => {
   });
   
   //
-  router.delete('/:id', (req, res) => {
+  router.delete('/:id', withAuth,(req, res) => {
     User.destroy({
       where: {
         id: req.params.id
