@@ -6,9 +6,11 @@
 
 
     {{#if pets.length}}
+    
     <section>
         <h2>Pets belonging to {{username}}:</h2>
-        <ol>
+        <table class="table table-dark table-striped">
+        
             {{#each pets as |pet|}}
             <div class="row pet-wrapper">
                 <h4 class="col-2">Name: {{pet.name}}</h4>
@@ -24,5 +26,6 @@
             </div>
             {{/each}}
     </section>
+    </table>
     {{/if}}
 </div>
