@@ -1,7 +1,5 @@
 <article class="homepage">
-    <div class="homepage">
-        <h1>Lets Get Your Lost Pet Home!</h1>
-    </div>
+    
 
 {{!-- 
     <div class="login-form">
@@ -115,6 +113,35 @@
                 <button class="clear-btn m-2">Clear</button>
                 <button class="search-btn m-2">Search</button>
             </div>
+        </div>
+
+
+        <div class="col-9">
+            <div class="homepage">
+                <h1>Lets Get Your Lost Pet Home!</h1>
+            </div>
+            <div class="lost-pets">
+                <h2 class="pet-image">Recently Lost:</h2>
+                {{#if pet.image_path}}
+                <img src="{{pet.image_path}}">
+                {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
+                {{else}}
+                <p>No Image was provided for this pet.</p>
+                {{/if}}
+                {{!-- !!! {{each statements}} --}}
+            </div>
+            <div class="reunited-pets">
+                <h2 class="pet-image">Reunited Pets:</h2>
+                {{#if pet.image_path}}
+                <img src="{{pet.image_path}}">
+                {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
+                {{else}}
+                <p>No Image was provided for this pet.</p>
+                {{/if}}
+                {{!-- !!! {{each statements}} --}}
+            </div>
+        </div>
+    
         </div>
         {{/if}}
 </article>
