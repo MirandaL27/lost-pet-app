@@ -1,12 +1,13 @@
-const clearFilter = () =>{
-//clear filter fields
+const clearFilter = () => {
+    //clear filter fields
+    document.querySelector(".status").selectedIndex = 0;
     document.querySelector(".name").value = "";
     document.querySelector(".species").value = "";
     document.querySelector(".breed").value = "";
     document.querySelector(".gender").selectedIndex = 0;
     document.querySelector(".color").selectedIndex = 0;
-    document.querySelector(".age").value="";
-    document.querySelector(".username").value="";
+    document.querySelector(".age").value = "";
+    document.querySelector(".username").value = "";
 }
 
 async function filterPets() {
@@ -15,6 +16,7 @@ async function filterPets() {
     let queryUrl = '/?';
 
     let formData = {};
+    formData.status = document.querySelector(".status").value;
     formData.name = document.querySelector(".name").value;
     formData.species = document.querySelector(".species").value;
     formData.breed = document.querySelector(".breed").value;
@@ -24,9 +26,9 @@ async function filterPets() {
     formData.username = document.querySelector(".username").value;
 
     Object.entries(formData).forEach(([key, value]) => {
-      queryUrl += `${key}=${value}&`;
+        queryUrl += `${key}=${value}&`;
     });
-  
+
     console.log(queryUrl);
     //fetch request
     let response = await fetch(queryUrl);
