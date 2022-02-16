@@ -66,16 +66,14 @@
                 <button class="search-btn m-2">Search</button>
             </div>
         </form>
-    </div>
-
     <div class="col-lg-9 col-sm-12">
         <div class="homepage">
             <h1>Lets Get Your Lost Pet Home!</h1>
         </div>
         <div class="lost-pets">
             <h2 class="pet-image">All Pets:</h2>
-            {{#each pets as |pet| }}
             <ol>
+            {{#each pets as |pet| }}
                 <li>
                     <h3>Name: {{pet.name}}</h3>
                     <p>Species: {{pet.species}}</p>
@@ -83,10 +81,11 @@
                     <p>Gender: {{pet.gender}}</p>
                     <p>Age: {{pet.age}}</p>
                 </li>
-            </ol>
             {{/each}}
+            </ol>
         </div>
     </div>
+</div>
     {{/if}}
 </article>
 {{#if loggedIn}}
