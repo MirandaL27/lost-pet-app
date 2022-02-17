@@ -4,39 +4,13 @@
         <a class="dashboard-link h3" href="/add/pet">Create New Pet</a>
     </section>
 
-    {{!-- {{#if pets.length}}
-    <section class="p-4 pet-section-wrapper">
-        <h3>Pets belonging to {{username}}:</h3>
-
-        <form class="new-pet-form">
-            <div>
-                <label for="pet-title">Title</label>
-                <input type="text" id="pet-title" name="pet-title" />
-            </div>
-            <div>
-                <label for="pet-url">Link</label>
-                <input id="pet-url" name="pet-url" />
-            </div>
-            <button type="submit" class="btn">Add</button>
-        </form>
-    </section>
-
-    <ol class="items">
-        {{#each pets as |pet| }}
-        <li>
-            {{> petImage }}
-        </li>
-        <li>
-
-        </li>
-        {{/each}}
-    </ol>
-    {{/if}} --}}
 
     {{#if pets.length}}
+    
     <section>
         <h2>Pets belonging to {{username}}:</h2>
-        <ol>
+        <table class="table table-dark table-striped">
+        
             {{#each pets as |pet|}}
             <div class="row pet-wrapper">
                 <h4 class="col-2">Name: {{pet.name}}</h4>
@@ -52,5 +26,6 @@
             </div>
             {{/each}}
     </section>
+    </table>
     {{/if}}
 </div>
