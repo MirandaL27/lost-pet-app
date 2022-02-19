@@ -27,6 +27,10 @@ https://lost-pet-app-project.herokuapp.com/
 
 ### Screenshot of App:
 
+<img width="913" alt="dog" src="https://user-images.githubusercontent.com/92074903/154793387-39b08dbf-425e-4b08-bebc-f7e48418f4f4.png">
+
+
+<img width="1000" alt="Screen Shot 2022-02-19 at 1 34 24 AM" src="https://user-images.githubusercontent.com/92074903/154793437-d69827d9-583b-4a79-a528-e2c8238caaa2.png">
 
 ### Sources:
 For Image Handlebars.js--
