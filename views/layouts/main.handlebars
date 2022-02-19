@@ -25,13 +25,13 @@
       <nav class="row col-lg-7">
         {{#if loggedIn}}
           {{#if isDashboard}}
-          <a class="col-lg-4 text-center my-auto h4" href="/">Home</a>
+          <a class="col-lg-4 text-center my-auto h4 nav-link" href="/">Home</a>
           {{else}}
-          <a class="col-lg-4 text-center my-auto h4" href="/dashboard">Dashboard</a>
+          <a class="col-lg-4 text-center my-auto h4 nav-link" href="/dashboard">Dashboard</a>
           {{/if}}
-        <button id="logout" class="btn-no-style col-lg-4 text-center my-auto h4">Logout</button>
+        <button id="logout" class="btn-no-style col-lg-4 text-center my-auto h4 nav-link">Logout</button>
         {{else}}
-        <a class="col-lg-4 text-center my-auto h4" href="/login">Login</a>
+        <a class="col-lg-4 text-center my-auto h4 nav-link" href="/login">Login</a>
         {{/if}}
         
       </nav>

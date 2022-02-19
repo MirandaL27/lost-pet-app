@@ -10,7 +10,7 @@
     font-weight: 400;
     color: var(--light);
     line-height: 1.5;
-    font-size: 16px;
+    font-size: 2vw;
   }
   h1,
   h2,
@@ -26,33 +26,26 @@
   }
   
   h1 {
-    font-size: 2.25rem;
+    font-size: 1.25em;
   }
   
-  h2 {
-    font-size: 2rem;
+  h2, .nav-link {
+    font-size: 1.1em;
   }
   
   h3 {
-    font-size: 1.75rem;
+    font-size: 1em;
   }
   
-  h4 {
-    font-size: 1.5rem;
+   h4 {
+    font-size: 0.75em;
   }
   
-  h5 {
-    font-size: 1.25rem;
-  }
   
-  h6 {
-    font-size: 1rem;
-  }
-  
-  p {
-    font-size: 1.1rem;
+  p,label,input,select {
+    font-size: 0.75em;
     margin-top: 0;
-  }
+  } 
   
   a {
     text-decoration: none;
