@@ -23,8 +23,9 @@
     </div>
     <div class="pet-image col-sm-12 col-lg-6 p-4">
         {{#if pet.image_path}}
-        <img class="w-75 h-75 border border-3 border-dark rounded shadow" src="{{pet.image_path}}">
-        {{!-- <img src="/uploads\\29d73559a965aa01888979c97b85c9e7"> --}}
+        <div class="w-75 h-75">
+            <img class="border border-3 border-dark rounded shadow" src="{{pet.image_path}}">
+        </div>
         {{else}}
         <p>No Image was provided for this pet.</p>
         {{/if}}
@@ -68,6 +69,4 @@
 <a href = "/login">Login</a>
 {{/if}}
 </div>
-{{#if loggedIn}}
 <script src = "/javascript/comments.js"></script>
-{{/if}}

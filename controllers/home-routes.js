@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
       },
       {
         model: User,
-        attributes: ['username'],
+        attributes: ['username', 'email'],
         where:userWhereObj
       }
     ]
@@ -134,7 +134,7 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-  res.render('login');
+  res.render('signup');
 });
 
 

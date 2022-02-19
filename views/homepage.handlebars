@@ -1,10 +1,4 @@
 <article class="homepage">
-
-    {{#if loggedIn}}
-    {{else}}
-    {{> signup }}
-    {{/if}}
-    {{#if loggedIn}}
     <div class="row">
         <form class="filter-wrapper bg-dark col-lg-3 col-sm-12 text-light">
             <h2 class="p-2">Search Filter:</h2>
@@ -61,9 +55,9 @@
                 <label class="col-4">Username: </label>
                 <input class="col-8 username" type="text" name="username" />
             </div>
-            <div class="row p-2">
-                <button class="clear-btn m-2">Clear</button>
-                <button class="search-btn m-2">Search</button>
+            <div class="row p-4">
+                <button type="button" class="clear-btn m-2">Clear</button>
+                <button type="submit" class="search-btn m-2">Search</button>
             </div>
         </form>
     <div class="col-lg-9 col-sm-12">
@@ -72,22 +66,35 @@
         </div>
         <div class="lost-pets">
             <h2 class="pet-image">All Pets:</h2>
-            <ol>
             {{#each pets as |pet| }}
-                <li>
-                    <h3>Name: {{pet.name}}</h3>
-                    <p>Species: {{pet.species}}</p>
-                    <p>Breed: {{pet.breed}}</p>
-                    <p>Gender: {{pet.gender}}</p>
-                    <p>Age: {{pet.age}}</p>
-                </li>
+            <div class="pet-li p-2">
+                <div class="row">
+                    <h3 class="col-6">Name: {{pet.name}}</h3>
+                    <h3 class="col-6">Contact: {{pet.user.email}}</h3>
+                </div>
+                <div class="row">
+                    {{#if pet.image_path}}
+                    {{else}}
+                    <p class="col-2">Species: {{pet.species}}</p>
+                    <p class="col-2">Breed: {{pet.breed}}</p>
+                    <p class="col-2">Gender: {{pet.gender}}</p>
+                    <p class="col-2">Age: {{pet.age}}</p>
+                    {{/if}}
+                    <a class="col-2 dashboard-link" href="/pet/{{pet.id}}">Pet Details</a>
+                </div>
+                <div class="pet-image">
+                    {{#if pet.image_path}}
+                    <div class="image-container w-75 h-75">
+                        <img class="image border border-3 border-dark rounded shadow" src="{{pet.image_path}}">
+                    </div>
+                    {{else}}
+                    <p>No Image was provided for this pet.</p>
+                    {{/if}}
+                </div>
+            </div>
             {{/each}}
-            </ol>
         </div>
     </div>
 </div>
-    {{/if}}
 </article>
-{{#if loggedIn}}
 <script src="/javascript/filter.js"></script>
-{{/if}}
