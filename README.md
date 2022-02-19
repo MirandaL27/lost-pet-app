@@ -13,6 +13,12 @@ AS A pet owner
 I WANT to find my lost pet by letting my community become aware
 SO THAT I can bring my pet back home
 
+
+### ScreenShot
+
+<img width="913" alt="dog" src="https://user-images.githubusercontent.com/92074903/154793335-bd1407a7-8fa9-4451-a004-32bfb5aba715.png">
+
+
 ### GitHub site:
 https://github.com/MirandaL27/lost-pet-app
 
