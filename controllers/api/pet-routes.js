@@ -126,31 +126,31 @@ router.get('/', (req, res) => {
   });
 
 
-//   //delete photo route
-// router.delete('/:id',withAuth,(req, res) => {
-//   Pet.findOne({
-//     where: {
-//       id: req.params.id
-//     },
-//     attributes: ['image_path']
-//   })
-//   .then(dbPetData => {
-//     if (!dbPetData) {
-//       res.status(404).json({ message: 'No pet found with this id' });
-//       return;
-//     }
-//     console.log(dbPetData.image_path);
-//     fs.unlink("public"+dbPetData.image_path, () => {
+  //delete photo route
+router.delete('/:id',withAuth,(req, res) => {
+  Pet.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['image_path']
+  })
+  .then(dbPetData => {
+    if (!dbPetData) {
+      res.status(404).json({ message: 'No pet found with this id' });
+      return;
+    }
+    console.log(dbPetData.image_path);
+    fs.unlink("public"+dbPetData.image_path, () => {
       
-//       res.send("Photo deleted Successfully!")
+      res.send("Photo deleted Successfully!")
     
-//     });
-//   })
-//   .catch(err => {
-//     console.log(err);
-//     res.status(500).json(err);
-//   });
-// })
+    });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+})
 
   //update pet (need to use post route because html forms don't support put or delete)
   router.post('/:id',[withAuth,upload.single('img-post')],(req, res) => {
