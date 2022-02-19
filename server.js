@@ -1,11 +1,8 @@
-
 const express = require('express');
 const routes = require('./controllers');
 
 const path = require('path');
 const exphbs = require('express-handlebars');
-//const multer  = require('multer')
-//const upload = multer({ dest: 'uploads/' })
 const helpers = require('./utils/helpers');
 const hbs = exphbs.create({ helpers });
 const app = express();
@@ -43,30 +40,15 @@ app.use(require('./controllers/'));
 app.use('/uploads', express.static('uploads'));
 
 
-//render upload images page
-app.get('/upload', (req, res) => {
-  if(req.session.logginIn){
-    res.redirect('/');
-    return;
-  }
-  //ToDO: add code that will return the image.
+// app.get('/upload', (req, res) => {
+//   if(req.session.logginIn){
+//     res.redirect('/');
+//     return;
+//   }
   
-  res.render('petImage');
-});
-
-// app.post('/upload',upload.single('img-post'),(req, res) => {
-//   //post the image here!
-//   //todo: add the file path to the pet post in the database.
-
-//   console.log(req.file);
-//   var response = '<a href="/">Home</a><br>'
-//   response += "Files uploaded successfully.<br>"
-//   response += `<img src="${req.file.path}" /><br>`
-//   return res.send(response)
+//   res.render('petImage');
 // });
 
-
-// turn on routes
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {

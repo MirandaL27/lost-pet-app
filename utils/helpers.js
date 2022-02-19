@@ -1,12 +1,13 @@
 
 const parseQueryString = (params) => {
     var finalObj = {};
+    console.log(params);
     if(params){
-        if(params.color){
-            finalObj.color = params.color;
+        if(params.colors){
+            finalObj.color = params.colors;
         }
         if(params.status){
-            finalObj.is_lost = params.status;
+            finalObj.is_lost = (params.status==="lost");
         }
         if(params.name){
             finalObj.name = params.name;

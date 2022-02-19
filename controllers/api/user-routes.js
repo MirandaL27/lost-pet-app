@@ -118,45 +118,4 @@ router.post('/logout', (req, res) => {
   }
 });
 
-    //update a user
-router.put('/:id',withAuth, async (req, res) => {
-  try{
-    let data = await User.update(req.body, {
-      individualHooks: true,
-      where: {
-        id: req.params.id
-      }
-    });
-    if (!data[0]) {
-      res.status(404).json({ message: 'No user found with this id' });
-      return;
-    }
-    res.json(data);
-  }
-  catch(error){
-    console.log(error);
-      res.status(500).json(error);
-  }
-  });
-  
-  //
-  router.delete('/:id', withAuth,(req, res) => {
-    User.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(dbUserData => {
-        if (!dbUserData) {
-          res.status(404).json({ message: 'No user found with this id' });
-          return;
-        }
-        res.json(dbUserData);
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
-  });
-
 module.exports = router;

@@ -18,8 +18,8 @@
             <div class="gender-wrapper row p-2">
                 <label class="col-4" >Gender: </label>
                 <select class="col-8" name="gender" id="gender" value="{{pet.gender}}">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option class="gender-option" value="male">Male</option>
+                    <option class="gender-option" value="female">Female</option>
                 </select>
             </div>
             <div class="age-wrapper row p-2">
@@ -35,17 +35,17 @@
             <div class="color-wrapper row p-2">
                 <label class="col-4">Color: </label>
                 <select class="col-8" name="colors" id="colors" value="{{pet.color}}">
-                    <option value="white">White</option>
-                    <option value="black">Black</option>
-                    <option value="grey">Grey</option>
-                    <option value="brown">Brown</option>
-                    <option value="red">Red</option>
-                    <option value="pink">Pink</option>
-                    <option value="orange">Orange</option>
-                    <option value="yellow">Yellow</option>
-                    <option value="green">Green</option>
-                    <option value="blue">Blue</option>
-                    <option value="purple">purple</option>
+                    <option class="color-option" value="white">White</option>
+                    <option class="color-option" value="black">Black</option>
+                    <option class="color-option" value="grey">Grey</option>
+                    <option class="color-option" value="brown">Brown</option>
+                    <option class="color-option" value="red">Red</option>
+                    <option class="color-option" value="pink">Pink</option>
+                    <option class="color-option" value="orange">Orange</option>
+                    <option class="color-option" value="yellow">Yellow</option>
+                    <option class="color-option" value="green">Green</option>
+                    <option class="color-option" value="blue">Blue</option>
+                    <option class="color-option" value="purple">purple</option>
                 </select>
             </div>
             <div class="diet-wrapper row p-2">
@@ -88,6 +88,20 @@
         <input type="submit" value="Submit" />
     </div>
 </form>
+<script>
+let options = document.querySelectorAll(".color-option");
+options.forEach(data => {
+    if(data.value === "{{pet.color}}"){
+        data.setAttribute("selected", true);
+    }
+})
+options = document.querySelectorAll(".gender-option");
+options.forEach(data => {
+    if(data.value === "{{pet.gender}}"){
+        data.setAttribute("selected", true);
+    }
+})
+</script>
 {{#if pet.image_path}}
 <script src="/javascript/update-pet.js"></script>
 {{/if}}

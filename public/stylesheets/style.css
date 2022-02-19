@@ -3,14 +3,15 @@
     box-sizing: border-box;
   }
 
+
   body {
     margin: 0;
     padding: 0;
     font-family: 'Karla', sans-serif;
     font-weight: 400;
-    color: var(--secondary);
+    color: var(--light);
     line-height: 1.5;
-    font-size: 16px;
+    font-size: 4vh;
   }
   h1,
   h2,
@@ -21,38 +22,31 @@
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
     margin: 5px 0;
-    color: var(--secondary);
+    color: var(--light);
     line-height: 1.25;
   }
   
   h1 {
-    font-size: 2.25rem;
+    font-size: 1.25em;
   }
   
-  h2 {
-    font-size: 2rem;
+  h2, .nav-link {
+    font-size: 1.1em;
   }
   
   h3 {
-    font-size: 1.75rem;
+    font-size: 1em;
   }
   
-  h4 {
-    font-size: 1.5rem;
+   h4 {
+    font-size: 0.75em;
   }
   
-  h5 {
-    font-size: 1.25rem;
-  }
   
-  h6 {
-    font-size: 1rem;
-  }
-  
-  p {
-    font-size: 1.1rem;
+  p,label,input,select {
+    font-size: 0.75em;
     margin-top: 0;
-  }
+  } 
   
   a {
     text-decoration: none;
@@ -78,6 +72,7 @@
 
 .dashboard-link{
     color: white;
+    font-size: 1em;
 }
 
 .pet-wrapper:nth-child(even){
@@ -87,3 +82,17 @@
 .comment:nth-child(even){
     background-color: rgb(71, 69, 69);
 }
+.pet-li:nth-child(even){
+  background-color: rgb(71, 69, 69);
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+@media only screen and (max-width: 900px) {
+  body {
+    font-size: 2vh;
+  }
+} 
